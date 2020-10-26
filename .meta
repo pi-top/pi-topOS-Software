@@ -27,7 +27,6 @@
     "pt-os-setup": "git@github.com:pi-top/pt-os-setup-deb.git",
     "pt-os-updater": "git@github.com:pi-top/pt-os-updater-deb.git",
     "pt-plym-splash": "git@github.com:pi-top/pt-plym-splash-deb.git",
-    "pt-pma": "git@github.com:pi-top/pt-pma-deb.git",
     "pt-portal": "git@github.com:pi-top/pt-portal-deb.git",
     "pt-project-files": "git@github.com:pi-top/pt-project-files-deb.git",
     "pt-pulse": "git@github.com:pi-top/pt-pulse-deb.git",
@@ -50,11 +49,11 @@
     "python3-pt-hub-v3": "git@github.com:pi-top/python3-pt-hub-v3-deb.git",
     "python3-pt-keyboard": "git@github.com:pi-top/python3-pt-keyboard-deb.git",
     "python3-pt-oled": "git@github.com:pi-top/python3-pt-oled-deb.git",
-    "python3-pt-pma": "git@github.com:pi-top/python3-pt-pma-deb.git",
     "python3-pt-proto-plus": "git@github.com:pi-top/python3-pt-proto-plus-deb.git",
     "python3-pt-pulse": "git@github.com:pi-top/python3-pt-pulse-deb.git",
     "python3-pt-speaker": "git@github.com:pi-top/python3-pt-speaker-deb.git",
     "python3-pt-speech": "git@github.com:pi-top/python3-pt-speech-deb.git",
-    "touchegg": "git@github.com:pi-top/touchegg-deb.git"
+    "touchegg": "git@github.com:pi-top/touchegg-deb.git",
+    "pi-top-Maker-Architecture": "git@github.com:pi-top/pi-top-Maker-Architecture.git"
   }
 }
