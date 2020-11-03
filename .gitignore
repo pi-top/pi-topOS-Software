@@ -40,16 +40,10 @@
 /pt-ui-mods/
 /pt-user-libs/
 /pt-web-ui/
-/python3-pt-buttons/
-/python3-pt-common/
 /python3-pt-hub-v1/
 /python3-pt-hub-v2/
 /python3-pt-hub-v3/
-/python3-pt-keyboard/
-/python3-pt-oled/
-/python3-pt-proto-plus/
-/python3-pt-pulse/
 /python3-pt-speaker/
 /python3-pt-speech/
 /touchegg/
-/pi-top-Maker-Architecture/
+/pi-top-Python-API/

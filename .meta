@@ -42,18 +42,12 @@
     "pt-ui-mods": "git@github.com:pi-top/pt-ui-mods-deb.git",
     "pt-user-libs": "git@github.com:pi-top/pt-user-libs-deb.git",
     "pt-web-ui": "git@github.com:pi-top/pt-web-ui-deb.git",
-    "python3-pt-buttons": "git@github.com:pi-top/python3-pt-buttons-deb.git",
-    "python3-pt-common": "git@github.com:pi-top/python3-pt-common-deb.git",
     "python3-pt-hub-v1": "git@github.com:pi-top/python3-pt-hub-v1-deb.git",
     "python3-pt-hub-v2": "git@github.com:pi-top/python3-pt-hub-v2-deb.git",
     "python3-pt-hub-v3": "git@github.com:pi-top/python3-pt-hub-v3-deb.git",
-    "python3-pt-keyboard": "git@github.com:pi-top/python3-pt-keyboard-deb.git",
-    "python3-pt-oled": "git@github.com:pi-top/python3-pt-oled-deb.git",
-    "python3-pt-proto-plus": "git@github.com:pi-top/python3-pt-proto-plus-deb.git",
-    "python3-pt-pulse": "git@github.com:pi-top/python3-pt-pulse-deb.git",
     "python3-pt-speaker": "git@github.com:pi-top/python3-pt-speaker-deb.git",
     "python3-pt-speech": "git@github.com:pi-top/python3-pt-speech-deb.git",
     "touchegg": "git@github.com:pi-top/touchegg-deb.git",
-    "pi-top-Maker-Architecture": "git@github.com:pi-top/pi-top-Maker-Architecture.git"
+    "pi-top-Python-API": "git@github.com:pi-top/pi-top-Python-API.git"
   }
 }
