@@ -9,7 +9,6 @@
     "pt-avs": "git@github.com:pi-top/pt-avs-deb.git",
     "pt-coder": "git@github.com:pi-top/pt-coder-deb.git",
     "pt-dev": "git@github.com:pi-top/pt-dev-deb.git",
-    "pt-device-cli-utils": "git@github.com:pi-top/pt-device-cli-utils-deb.git",
     "pt-device-manager": "git@github.com:pi-top/pt-device-manager-deb.git",
     "pt-devices": "git@github.com:pi-top/pt-devices-deb.git",
     "pt-diagnostics": "git@github.com:pi-top/pt-diagnostics-deb.git",
