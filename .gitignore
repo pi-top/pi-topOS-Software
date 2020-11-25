@@ -1,3 +1,5 @@
+.DS_Store
+
 /3d-slash/
 /fonts-fs-me-pro/
 /lxplug-ptportal/
@@ -40,10 +42,7 @@
 /pt-ui-mods/
 /pt-user-libs/
 /pt-web-ui/
-/python3-pt-hub-v1/
-/python3-pt-hub-v2/
-/python3-pt-hub-v3/
-/python3-pt-speaker/
 /python3-pt-speech/
 /touchegg/
-/pi-top-Python-API/
+/pi-top-Python-SDK/
+/pi-top-Python-Common-Library/
