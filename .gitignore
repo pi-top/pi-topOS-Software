@@ -2,7 +2,6 @@
 
 /3d-slash/
 /fonts-fs-me-pro/
-/lxplug-ptportal/
 /pi-top-4/
 /pt-about/
 /pt-apps/
@@ -26,7 +25,6 @@
 /pt-os-setup/
 /pt-os-updater/
 /pt-plym-splash/
-/pt-portal/
 /pt-project-files/
 /pt-pulse/
 /pt-recovery/
@@ -45,3 +43,4 @@
 /touchegg/
 /pi-top-Python-SDK/
 /pi-top-Python-Common-Library/
+/pi-top-Python-SDK-Deprecation-Support/

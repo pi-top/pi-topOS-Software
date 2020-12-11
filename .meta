@@ -2,7 +2,6 @@
   "projects": {
     "3d-slash": "git@github.com:pi-top/3d-slash-deb.git",
     "fonts-fs-me-pro": "git@github.com:pi-top/fonts-fs-me-pro-deb.git",
-    "lxplug-ptportal": "git@github.com:pi-top/lxplug-ptportal-deb.git",
     "pi-top-4": "git@github.com:pi-top/pi-top-4-deb.git",
     "pt-about": "git@github.com:pi-top/pt-about-deb.git",
     "pt-apps": "git@github.com:pi-top/pt-apps-deb.git",
@@ -26,7 +25,6 @@
     "pt-os-setup": "git@github.com:pi-top/pt-os-setup-deb.git",
     "pt-os-updater": "git@github.com:pi-top/pt-os-updater-deb.git",
     "pt-plym-splash": "git@github.com:pi-top/pt-plym-splash-deb.git",
-    "pt-portal": "git@github.com:pi-top/pt-portal-deb.git",
     "pt-project-files": "git@github.com:pi-top/pt-project-files-deb.git",
     "pt-pulse": "git@github.com:pi-top/pt-pulse-deb.git",
     "pt-recovery": "git@github.com:pi-top/pt-recovery-deb.git",
@@ -44,6 +42,7 @@
     "python3-pt-speech": "git@github.com:pi-top/python3-pt-speech-deb.git",
     "touchegg": "git@github.com:pi-top/touchegg-deb.git",
     "pi-top-Python-SDK": "git@github.com:pi-top/pi-top-Python-SDK.git",
-    "pi-top-Python-Common-Library": "git@github.com:pi-top/pi-top-Python-Common-Library.git"
+    "pi-top-Python-Common-Library": "git@github.com:pi-top/pi-top-Python-Common-Library.git",
+    "pi-top-Python-SDK-Deprecation-Support": "git@github.com:pi-top/pi-top-Python-SDK-Deprecation-Support.git"
   }
 }
