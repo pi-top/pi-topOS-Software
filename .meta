@@ -43,6 +43,7 @@
     "touchegg": "git@github.com:pi-top/touchegg-deb.git",
     "pi-top-Python-SDK": "git@github.com:pi-top/pi-top-Python-SDK.git",
     "pi-top-Python-Common-Library": "git@github.com:pi-top/pi-top-Python-Common-Library.git",
-    "pi-top-Python-SDK-Deprecation-Support": "git@github.com:pi-top/pi-top-Python-SDK-Deprecation-Support.git"
+    "pi-top-Python-SDK-Deprecation-Support": "git@github.com:pi-top/pi-top-Python-SDK-Deprecation-Support.git",
+    "pt-networking": "git@github.com:pi-top/pt-networking-deb.git"
   }
 }
