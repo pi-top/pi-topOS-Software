@@ -1,6 +1,7 @@
 name: Package Quality Check
 
 on:
+  push:
   schedule:
     # Run daily at midnight
     - cron:  '0 0 * * *'
