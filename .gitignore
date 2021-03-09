@@ -9,7 +9,6 @@
 /pt-coder/
 /pt-dev/
 /pt-device-manager/
-/pt-diagnostics/
 /pt-display-port/
 /pt-eglfs-utils/
 /pt-firmware-images/
@@ -36,9 +35,9 @@
 /pt-user-libs/
 /pt-web-ui/
 /python3-pt-speech/
-/touchegg/
 /pi-top-Python-SDK/
 /pi-top-Python-Common-Library/
 /pi-top-Python-SDK-Migration-Support/
 /pt-networking/
 /pt-devices/
+/raspi2png/
