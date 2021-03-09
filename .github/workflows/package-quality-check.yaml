@@ -10,22 +10,29 @@ jobs:
   check-package:
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout code
+      - name: Checkout repository submodules
         uses: actions/checkout@v2.2.0
-        with:
-          submodules: 'recursive'
 
-      - name: Show directories
+      # TODO: Create Docker image for managing meta repos
+      - name: Install
+        uses: bahmutov/npm-install@v1
+
+      - name: Install
+        run: |
+          npm i -g meta
+          meta git update
+
+      - name: Show directory content
         run: |
           ls -l
 
-      - name: Check that latest entry is listed correctly
-      # TODO: assert these conditions
-      # TODO: remove 'Cleaning up files which we don't want in the source tarball' step from Jenkins
-        run: |
-          head -n1 debian/changelog | grep -q 'buster'
-          head -n1 debian/changelog | grep -q 'UNRELEASED'
-          head -n1 debian/changelog | grep -q 'urgency=medium'
-          grep -q 'Architecture: armhf' debian/control
-          grep -q 'Jenkinsfile' debian/clean
-          grep -q '.git' debian/clean
+      # - name: Check that latest entry is listed correctly
+      # # TODO: assert these conditions
+      # # TODO: remove 'Cleaning up files which we don't want in the source tarball' step from Jenkins
+      #   run: |
+      #     head -n1 debian/changelog | grep -q 'buster'
+      #     head -n1 debian/changelog | grep -q 'UNRELEASED'
+      #     head -n1 debian/changelog | grep -q 'urgency=medium'
+      #     grep -q 'Architecture: armhf' debian/control
+      #     grep -q 'Jenkinsfile' debian/clean
+      #     grep -q '.git' debian/clean
