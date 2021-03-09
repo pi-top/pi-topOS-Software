@@ -1,0 +1,30 @@
+name: Package Quality Check
+
+on:
+  schedule:
+    # Run daily at midnight
+    - cron:  '0 0 * * *'
+
+jobs:
+  check-package:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.2.0
+        with:
+          fetch-depth: 0
+
+      - name: Show directories
+        run: |
+          ls -l
+
+      - name: Check that latest entry is listed correctly
+      # TODO: assert these conditions
+      # TODO: remove 'Cleaning up files which we don't want in the source tarball' step from Jenkins
+        run: |
+          head -n1 debian/changelog | grep -q 'buster'
+          head -n1 debian/changelog | grep -q 'UNRELEASED'
+          head -n1 debian/changelog | grep -q 'urgency=medium'
+          grep -q 'Architecture: armhf' debian/control
+          grep -q 'Jenkinsfile' debian/clean
+          grep -q '.git' debian/clean
