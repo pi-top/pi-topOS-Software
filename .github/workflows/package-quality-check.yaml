@@ -31,9 +31,23 @@ jobs:
         run: |
           meta exec "ls -l" --parallel
 
-      - name: Check that latest entry is listed correctly
+      # TODO: evaluate performing multiple greps at once:
+      #     [[ $(grep -e word1 -e word2 FILE | uniq -c | wc -l) -eq 2 ]] && echo "found both"
+
+      - name: Check that debian/changelog is correctly formatted
         run: |
-          meta exec "[[ ! -f debian/changelog ]] && { echo 'No changelog'; }         || { head -n1 debian/changelog | grep -q 'buster'         && { echo 'Distribution: OK'; } || { echo 'Distribution: Not OK'; }; }"             --parallel
-          meta exec "[[ ! -f debian/changelog ]] && { echo 'No changelog'; }         || { head -n1 debian/changelog | grep -q 'urgency=medium' && { echo 'Urgency: OK'; }      || { echo 'Urgency: Not OK'; }; }"                  --parallel
-          meta exec "[[ ! -f debian/clean ]]     && { echo 'No debian/clean file'; } || { head -n1 debian/clean     | grep -q 'Jenkinsfile'    && { echo 'clean file: OK'; }   || { echo 'clean file: Missing 'Jenkinsfile'; }; }" --parallel
-          meta exec "[[ ! -f debian/clean ]]     && { echo 'No debian/clean file'; } || { head -n1 debian/clean     | grep -q '.git'           && { echo 'clean file: OK'; }   || { echo 'clean file: Missing '.git'; }; }"        --parallel
+          meta exec "[[ ! -f debian/changelog ]]        && { echo 'No changelog'; }         || { head -n1 debian/changelog | grep -q 'buster'                  && { echo 'Distribution: OK'; }                   || { echo 'Distribution: Not OK'; }; }"                   --parallel
+          meta exec "[[ ! -f debian/changelog ]]        && { echo 'No changelog'; }         || { head -n1 debian/changelog | grep -q 'urgency=medium'          && { echo 'Urgency: OK'; }                        || { echo 'Urgency: Not OK'; }; }"                        --parallel
+
+      - name: Check that debian/clean is correctly formatted
+        run: |
+          meta exec "[[ ! -f debian/clean ]]            && { echo 'No debian/clean file'; } || { head -n1 debian/clean     | grep -q 'Jenkinsfile'             && { echo 'clean file: OK'; }                     || { echo 'clean file: Missing Jenkinsfile'; }; }"        --parallel
+          meta exec "[[ ! -f debian/clean ]]            && { echo 'No debian/clean file'; } || { head -n1 debian/clean     | grep -q '.git'                    && { echo 'clean file: OK'; }                     || { echo 'clean file: Missing .git'; }; }"               --parallel
+
+      - name: Check that pre-commit is configured correctly
+        run: |
+          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; } || { pre-commit autoupdate                                         && { echo 'Pre-commit up-to-date: OK'; }          || { echo 'Pre-commit up-to-date: Not OK'; }; }"          --parallel
+          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; } || { grep -q 'id: trailing-whitespace'     .pre-commit-config.yaml && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
+          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; } || { grep -q 'id: end-of-file-fixer'       .pre-commit-config.yaml && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
+          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; } || { grep -q 'id: check-added-large-files' .pre-commit-config.yaml && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
+          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; } || { grep -q 'id: check-symlinks'          .pre-commit-config.yaml && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
