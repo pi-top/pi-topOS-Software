@@ -13,26 +13,27 @@ jobs:
       - name: Checkout repository submodules
         uses: actions/checkout@v2.2.0
 
-      # TODO: Create Docker image for managing meta repos
-      - name: Install
-        uses: bahmutov/npm-install@v1
-
-      - name: Install
+      - name: Install meta
         run: |
-          npm i -g meta
+          sudo npm i -g meta
+
+      - name: Install SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.GH_SERVICE_ACCT_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: Clone repositories using meta
+        run: |
           meta git update
 
       - name: Show directory content
         run: |
-          ls -l
+          meta exec "ls -l" --parallel
 
-      # - name: Check that latest entry is listed correctly
-      # # TODO: assert these conditions
-      # # TODO: remove 'Cleaning up files which we don't want in the source tarball' step from Jenkins
-      #   run: |
-      #     head -n1 debian/changelog | grep -q 'buster'
-      #     head -n1 debian/changelog | grep -q 'UNRELEASED'
-      #     head -n1 debian/changelog | grep -q 'urgency=medium'
-      #     grep -q 'Architecture: armhf' debian/control
-      #     grep -q 'Jenkinsfile' debian/clean
-      #     grep -q '.git' debian/clean
+      - name: Check that latest entry is listed correctly
+        run: |
+          meta exec "[[ ! -f debian/changelog ]] && { echo 'No changelog'; }         || { head -n1 debian/changelog | grep -q 'buster'         && { echo 'Distribution: OK'; } || { echo 'Distribution: Not OK'; }; }"             --parallel
+          meta exec "[[ ! -f debian/changelog ]] && { echo 'No changelog'; }         || { head -n1 debian/changelog | grep -q 'urgency=medium' && { echo 'Urgency: OK'; }      || { echo 'Urgency: Not OK'; }; }"                  --parallel
+          meta exec "[[ ! -f debian/clean ]]     && { echo 'No debian/clean file'; } || { head -n1 debian/clean     | grep -q 'Jenkinsfile'    && { echo 'clean file: OK'; }   || { echo 'clean file: Missing 'Jenkinsfile'; }; }" --parallel
+          meta exec "[[ ! -f debian/clean ]]     && { echo 'No debian/clean file'; } || { head -n1 debian/clean     | grep -q '.git'           && { echo 'clean file: OK'; }   || { echo 'clean file: Missing '.git'; }; }"        --parallel
