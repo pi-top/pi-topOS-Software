@@ -36,18 +36,25 @@ jobs:
 
       - name: Check that debian/changelog is correctly formatted
         run: |
-          meta exec "[[ ! -f debian/changelog ]]        && { echo 'No changelog'; }         || { head -n1 debian/changelog | grep -q 'buster'                  && { echo 'Distribution: OK'; }                   || { echo 'Distribution: Not OK'; }; }"                   --parallel
-          meta exec "[[ ! -f debian/changelog ]]        && { echo 'No changelog'; }         || { head -n1 debian/changelog | grep -q 'urgency=medium'          && { echo 'Urgency: OK'; }                        || { echo 'Urgency: Not OK'; }; }"                        --parallel
+          meta exec "[[ ! -f debian/changelog ]]        && { echo 'No changelog'; }                  || { head -n1 debian/changelog       grep -q 'buster'                      && { echo 'Distribution: OK'; }                   || { echo 'Distribution: Not OK'; }; }"                   --parallel
+          meta exec "[[ ! -f debian/changelog ]]        && { echo 'No changelog'; }                  || { head -n1 debian/changelog       grep -q 'urgency=medium'              && { echo 'Urgency: OK'; }                        || { echo 'Urgency: Not OK'; }; }"                        --parallel
 
       - name: Check that debian/clean is correctly formatted
         run: |
-          meta exec "[[ ! -f debian/clean ]]            && { echo 'No debian/clean file'; } || { head -n1 debian/clean     | grep -q 'Jenkinsfile'             && { echo 'clean file: OK'; }                     || { echo 'clean file: Missing Jenkinsfile'; }; }"        --parallel
-          meta exec "[[ ! -f debian/clean ]]            && { echo 'No debian/clean file'; } || { head -n1 debian/clean     | grep -q '.git'                    && { echo 'clean file: OK'; }                     || { echo 'clean file: Missing .git'; }; }"               --parallel
+          meta exec "[[ ! -f debian/clean ]]            && { echo 'No debian/clean file'; }          || { grep -q '^tar-ignore = Jenkinsfile$' debian/clean                     && { echo 'clean file: OK'; }                     || { echo 'clean file: Missing Jenkinsfile'; }; }"        --parallel
+          meta exec "[[ ! -f debian/clean ]]            && { echo 'No debian/clean file'; }          || { grep -q '^tar-ignore = .github$'     debian/clean                     && { echo 'clean file: OK'; }                     || { echo 'clean file: Missing .git'; }; }"               --parallel
+
+      - name: Check that debian/source/options is correctly formatted
+        run: |
+          meta exec "[[ ! -f debian/source/options ]]   && { echo 'No debian/source/options file'; } || { grep -q '^tar-ignore = Jenkinsfile$' debian/source/options            && { echo 'source/options: OK'; }                 || { echo 'source/options: Missing Jenkinsfile'; }; }"    --parallel
+          meta exec "[[ ! -f debian/source/options ]]   && { echo 'No debian/source/options file'; } || { grep -q '^tar-ignore = Jenkinsfile$' debian/source/options            && { echo 'source/options: OK'; }                 || { echo 'source/options: Missing Jenkinsfile'; }; }"    --parallel
+          meta exec "[[ ! -f debian/source/options ]]   && { echo 'No debian/source/options file'; } || { grep -q '^tar-ignore = .github$'     debian/source/options            && { echo 'source/options: OK'; }                 || { echo 'source/options: Missing .git'; }; }"           --parallel
+
 
       - name: Check that pre-commit is configured correctly
         run: |
-          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; } || { pre-commit autoupdate                                         && { echo 'Pre-commit up-to-date: OK'; }          || { echo 'Pre-commit up-to-date: Not OK'; }; }"          --parallel
-          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; } || { grep -q 'id: trailing-whitespace'     .pre-commit-config.yaml && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
-          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; } || { grep -q 'id: end-of-file-fixer'       .pre-commit-config.yaml && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
-          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; } || { grep -q 'id: check-added-large-files' .pre-commit-config.yaml && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
-          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; } || { grep -q 'id: check-symlinks'          .pre-commit-config.yaml && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
+          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; }          || { pre-commit autoupdate                                                 && { echo 'Pre-commit up-to-date: OK'; }          || { echo 'Pre-commit up-to-date: Not OK'; }; }"          --parallel
+          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; }          || { grep -q 'id: trailing-whitespace'     .pre-commit-config.yaml         && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
+          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; }          || { grep -q 'id: end-of-file-fixer'       .pre-commit-config.yaml         && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
+          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; }          || { grep -q 'id: check-added-large-files' .pre-commit-config.yaml         && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
+          meta exec "[[ ! -f .pre-commit-config.yaml ]] && { echo 'No pre-commit config'; }          || { grep -q 'id: check-symlinks'          .pre-commit-config.yaml         && { echo 'Pre-commit has global settings: OK'; } || { echo 'Pre-commit has global settings: Not OK'; }; }" --parallel
