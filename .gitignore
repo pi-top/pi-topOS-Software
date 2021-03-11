@@ -1,6 +1,5 @@
 .DS_Store
 
-/3d-slash/
 /fonts-fs-me-pro/
 /pi-top-4/
 /pt-about/
@@ -41,3 +40,4 @@
 /pt-networking/
 /pt-devices/
 /raspi2png/
+/i2cping/
