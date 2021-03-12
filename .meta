@@ -40,6 +40,7 @@
     "pt-networking": "git@github.com:pi-top/pt-networking-deb.git",
     "pt-devices": "git@github.com:pi-top/pt-devices-deb.git",
     "raspi2png": "https://github.com/pi-top/raspi2png.git",
-    "i2cping": "git@github.com:pi-top/i2cping-deb.git"
+    "i2cping": "git@github.com:pi-top/i2cping-deb.git",
+    "pt-wireless-access-point": "git@github.com:pi-top/pt-wireless-access-point-deb.git"
   }
 }
