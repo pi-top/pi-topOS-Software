@@ -1,11 +1,5 @@
 .DS_Store
 
-# TODO: replace with pt-web-portal-desktop
-/pt-about/
-/pt-os-setup/
-/pt-settings/
-/pt-tour/
-
 /i2c-tools-extra/
 /raspi2png/
 /pi-top-4/
@@ -34,5 +28,6 @@
 /pt-touchscreen/
 /pt-ui-mods/
 /pt-web-portal/
+/pt-web-portal-desktop/
 /pt-web-ui/
 /pt-wireless-access-point/

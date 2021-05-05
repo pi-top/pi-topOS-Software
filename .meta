@@ -1,9 +1,5 @@
 {
   "projects": {
-    "pt-about": "git@github.com:pi-top/pt-about-deb.git",
-    "pt-os-setup": "git@github.com:pi-top/pt-os-setup-deb.git",
-    "pt-settings": "git@github.com:pi-top/pt-settings-deb.git",
-    "pt-tour": "git@github.com:pi-top/pt-tour-deb.git",
     "i2c-tools-extra": "git@github.com:pi-top/i2c-tools-extra.git",
     "raspi2png": "https://github.com/pi-top/raspi2png.git",
     "pi-top-4": "git@github.com:pi-top/pi-top-4-deb.git",
@@ -32,6 +28,7 @@
     "pt-touchscreen": "git@github.com:pi-top/pt-touchscreen-deb.git",
     "pt-ui-mods": "git@github.com:pi-top/pt-ui-mods-deb.git",
     "pt-web-portal": "git@github.com:pi-top/pt-web-portal.git",
+    "pt-web-portal-desktop": "git@github.com:pi-top/pt-web-portal-desktop-deb.git",
     "pt-web-ui": "git@github.com:pi-top/pt-web-ui.git",
     "pt-wireless-access-point": "git@github.com:pi-top/pt-wireless-access-point-deb.git"
   }
