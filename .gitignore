@@ -1,6 +1,6 @@
 .DS_Store
 
-/i2c-utils-extra/
+/i2c-tools-extra/
 /raspi2png/
 /pi-top-4/
 /pi-top-Python-Common-Library/
@@ -34,4 +34,3 @@
 /pt-web-portal/
 /pt-web-ui/
 /pt-wireless-access-point/
-/python3-pt-speech/
