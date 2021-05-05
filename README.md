@@ -4,7 +4,7 @@
 
 This is a [meta repo](https://github.com/mateodelnorte/meta), acting as an entry point for all of the OS packaging repositories.
 
-This is included as part of the top-level repository, [pi-topOS](https://github.com/pi-top/pi-top-OS-deb).
+This is included as part of the top-level repository, [pi-topOS-src](https://github.com/pi-top/pi-topOS-src).
 It is recommended that you include this meta repository as part of the top-level repository.
 
 ## Why?
