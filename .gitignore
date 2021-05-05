@@ -1,12 +1,17 @@
 .DS_Store
 
+# TODO: replace with pt-web-portal-desktop
+/pt-about/
+/pt-os-setup/
+/pt-settings/
+/pt-tour/
+
 /i2c-tools-extra/
 /raspi2png/
 /pi-top-4/
 /pi-top-Python-Common-Library/
 /pi-top-Python-SDK/
 /pi-top-Python-SDK-Migration-Support/
-/pt-about/
 /pt-avs/
 /pt-device-manager/
 /pt-display-port/
@@ -19,17 +24,14 @@
 /pt-os-archive-keyring/
 /pt-os-dummy-packages/
 /pt-os-mods/
-/pt-os-setup/
 /pt-os-updater/
 /pt-plym-splash/
 /pt-project-files/
 /pt-recovery/
-/pt-settings/
 /pt-shutdown-helper/
 /pt-sys-oled/
 /pt-system-tools/
 /pt-touchscreen/
-/pt-tour/
 /pt-ui-mods/
 /pt-web-portal/
 /pt-web-ui/

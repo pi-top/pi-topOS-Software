@@ -2,6 +2,7 @@
   "projects": {
     "pt-about": "git@github.com:pi-top/pt-about-deb.git",
     "pt-os-setup": "git@github.com:pi-top/pt-os-setup-deb.git",
+    "pt-settings": "git@github.com:pi-top/pt-settings-deb.git",
     "pt-tour": "git@github.com:pi-top/pt-tour-deb.git",
     "i2c-tools-extra": "git@github.com:pi-top/i2c-tools-extra.git",
     "raspi2png": "https://github.com/pi-top/raspi2png.git",
@@ -25,7 +26,6 @@
     "pt-plym-splash": "git@github.com:pi-top/pt-plym-splash-deb.git",
     "pt-project-files": "git@github.com:pi-top/pt-project-files-deb.git",
     "pt-recovery": "git@github.com:pi-top/pt-recovery-deb.git",
-    "pt-settings": "git@github.com:pi-top/pt-settings-deb.git",
     "pt-shutdown-helper": "git@github.com:pi-top/pt-shutdown-helper.git",
     "pt-sys-oled": "git@github.com:pi-top/pt-sys-oled.git",
     "pt-system-tools": "git@github.com:pi-top/pt-system-tools-deb.git",
