@@ -12,6 +12,7 @@
     "pt-firmware-updater": "git@github.com:pi-top/pt-firmware-updater-deb.git",
     "pt-further-link": "git@github.com:pi-top/pt-further-link-deb.git",
     "pt-icon-theme": "git@github.com:pi-top/pt-icon-theme.git",
+    "pt-networking": "git@github.com:pi-top/pt-networking-deb.git",
     "pt-notifications": "git@github.com:pi-top/pt-notifications.git",
     "pt-os-core": "git@github.com:pi-top/pt-os-core.git",
     "pt-os-mods": "git@github.com:pi-top/pt-os-mods-deb.git",
