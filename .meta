@@ -24,7 +24,7 @@
     "pt-recovery": "git@github.com:pi-top/pt-recovery-deb.git",
     "pt-shutdown-helper": "git@github.com:pi-top/pt-shutdown-helper.git",
     "pt-sys-oled": "git@github.com:pi-top/pt-sys-oled.git",
-    "pt-system-tools": "git@github.com:pi-top/pt-system-tools-deb.git",
+    "pt-system-tools": "git@github.com:pi-top/pt-system-tools.git",
     "pt-touchscreen": "git@github.com:pi-top/pt-touchscreen-deb.git",
     "pt-ui-mods": "git@github.com:pi-top/pt-ui-mods-deb.git",
     "pt-web-portal": "git@github.com:pi-top/pt-web-portal.git",
