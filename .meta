@@ -19,7 +19,6 @@
     "pt-os-mods": "git@github.com:pi-top/pt-os-mods-deb.git",
     "pt-os-updater": "git@github.com:pi-top/pt-os-updater-deb.git",
     "pt-plym-splash": "git@github.com:pi-top/pt-plym-splash-deb.git",
-    "pt-project-files": "git@github.com:pi-top/pt-project-files-deb.git",
     "pt-recovery": "git@github.com:pi-top/pt-recovery-deb.git",
     "pt-shutdown-helper": "git@github.com:pi-top/pt-shutdown-helper.git",
     "pt-sys-oled": "git@github.com:pi-top/pt-sys-oled.git",
