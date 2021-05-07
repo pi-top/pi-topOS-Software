@@ -14,7 +14,6 @@
     "pt-icon-theme": "git@github.com:pi-top/pt-icon-theme-deb.git",
     "pt-networking": "git@github.com:pi-top/pt-networking-deb.git",
     "pt-notifications": "git@github.com:pi-top/pt-notifications-deb.git",
-    "pt-os-archive-keyring": "git@github.com:pi-top/pt-os-archive-keyring-deb.git",
     "pt-os-core": "git@github.com:pi-top/pt-os-core.git",
     "pt-os-mods": "git@github.com:pi-top/pt-os-mods-deb.git",
     "pt-os-updater": "git@github.com:pi-top/pt-os-updater-deb.git",
