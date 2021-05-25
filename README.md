@@ -19,6 +19,23 @@ npm i -g meta
 meta git clone git@github.com:pi-top/pi-topOS.git
 ```
 
+## Packages Still To Make Publicly Available
+
+Ready soon:
+* `pt-wireless-access-point` (new name TBD)
+
+Require clean-up/rewrite:
+* `pt-device-manager`
+* `pt-firmware-updater`
+
+Needs discussion
+* `pt-firmware-images`
+* `pt-recovery`
+
+Waiting until Bullseye:
+* `pt-display-port` (and drop `pt-networking`)
+* `pt-os-mods`
+
 ## Packages Still To Add
 
 Debian Packages from other repositories
