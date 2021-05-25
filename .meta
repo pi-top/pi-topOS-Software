@@ -11,7 +11,7 @@
     "pt-display-port": "git@github.com:pi-top/pt-display-port-deb.git",
     "pt-firmware-images": "git@github.com:pi-top/pt-firmware-images-deb.git",
     "pt-firmware-updater": "git@github.com:pi-top/pt-firmware-updater-deb.git",
-    "pt-further-link": "git@github.com:pi-top/pt-further-link-deb.git",
+    "pt-further-link": "git@github.com:pi-top/pt-further-link.git",
     "pt-icon-theme": "git@github.com:pi-top/pt-icon-theme.git",
     "pt-networking": "git@github.com:pi-top/pt-networking-deb.git",
     "pt-os-archive-keyring": "git@github.com:pi-top/pt-os-archive-keyring.git",
