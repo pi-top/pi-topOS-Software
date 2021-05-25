@@ -23,7 +23,7 @@
     "pt-shutdown-helper": "git@github.com:pi-top/pt-shutdown-helper.git",
     "pt-sys-oled": "git@github.com:pi-top/pt-sys-oled.git",
     "pt-touchscreen": "git@github.com:pi-top/pt-touchscreen.git",
-    "pt-ui-mods": "git@github.com:pi-top/pt-ui-mods-deb.git",
+    "pt-ui-mods": "git@github.com:pi-top/pt-ui-mods.git",
     "pt-web-portal": "git@github.com:pi-top/pt-web-portal.git",
     "pt-wireless-access-point": "git@github.com:pi-top/pt-wireless-access-point-deb.git",
     "python-osc": "git@github.com:pi-top/python-osc.git",
