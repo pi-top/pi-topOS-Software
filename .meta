@@ -2,6 +2,7 @@
   "projects": {
     "Alexa-Voice-Service-Integration": "git@github.com:pi-top/Alexa-Voice-Service-Integration.git",
     "i2c-tools-extra": "git@github.com:pi-top/i2c-tools-extra.git",
+    "notify-send.sh": "git@github.com:pi-top/notify-send.sh.git",
     "raspi2png": "git@github.com:pi-top/raspi2png.git",
     "pi-top-Python-Common-Library": "git@github.com:pi-top/pi-top-Python-Common-Library.git",
     "pi-top-Python-SDK": "git@github.com:pi-top/pi-top-Python-SDK.git",
@@ -13,7 +14,6 @@
     "pt-further-link": "git@github.com:pi-top/pt-further-link-deb.git",
     "pt-icon-theme": "git@github.com:pi-top/pt-icon-theme.git",
     "pt-networking": "git@github.com:pi-top/pt-networking-deb.git",
-    "pt-notifications": "git@github.com:pi-top/pt-notifications.git",
     "pt-os-archive-keyring": "git@github.com:pi-top/pt-os-archive-keyring.git",
     "pt-os-core": "git@github.com:pi-top/pt-os-core.git",
     "pt-os-mods": "git@github.com:pi-top/pt-os-mods-deb.git",
@@ -22,7 +22,6 @@
     "pt-recovery": "git@github.com:pi-top/pt-recovery-deb.git",
     "pt-shutdown-helper": "git@github.com:pi-top/pt-shutdown-helper.git",
     "pt-sys-oled": "git@github.com:pi-top/pt-sys-oled.git",
-    "pt-system-tools": "git@github.com:pi-top/pt-system-tools.git",
     "pt-touchscreen": "git@github.com:pi-top/pt-touchscreen.git",
     "pt-ui-mods": "git@github.com:pi-top/pt-ui-mods-deb.git",
     "pt-web-portal": "git@github.com:pi-top/pt-web-portal.git",
