@@ -27,8 +27,8 @@
     "pt-ui-mods": "git@github.com:pi-top/pt-ui-mods.git",
     "pt-web-portal": "git@github.com:pi-top/pt-web-portal.git",
     "pt-wireless-access-point": "git@github.com:pi-top/pt-wireless-access-point-deb.git",
-    "python-osc": "git@github.com:pi-top/python-osc.git",
-    "python-sonic": "git@github.com:pi-top/python-sonic.git",
+    "python-osc-deb": "git@github.com:pi-top/python-osc-deb.git",
+    "python-sonic-deb": "git@github.com:pi-top/python-sonic-deb.git",
     "web-renderer": "git@github.com:pi-top/web-renderer.git"
   }
 }
