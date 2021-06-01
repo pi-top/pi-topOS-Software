@@ -3,6 +3,7 @@
     "Alexa-Voice-Service-Integration": "git@github.com:pi-top/Alexa-Voice-Service-Integration.git",
     "i2c-tools-extra": "git@github.com:pi-top/i2c-tools-extra.git",
     "luma.core-deb": "git@github.com:pi-top/luma.core-deb.git",
+    "luma.oled-deb": "git@github.com:pi-top/luma.oled-deb.git",
     "notify-send.sh": "git@github.com:pi-top/notify-send.sh.git",
     "raspi2png": "git@github.com:pi-top/raspi2png.git",
     "pi-top-Python-Common-Library": "git@github.com:pi-top/pi-top-Python-Common-Library.git",
