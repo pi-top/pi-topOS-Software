@@ -16,7 +16,6 @@
     "pt-further-link": "git@github.com:pi-top/pt-further-link.git",
     "pt-icon-theme": "git@github.com:pi-top/pt-icon-theme.git",
     "pt-networking": "git@github.com:pi-top/pt-networking-deb.git",
-    "pt-os-archive-keyring": "git@github.com:pi-top/pt-os-archive-keyring.git",
     "pt-os-core": "git@github.com:pi-top/pt-os-core.git",
     "pt-os-mods": "git@github.com:pi-top/pt-os-mods-deb.git",
     "pt-plym-splash": "git@github.com:pi-top/pt-plym-splash.git",
