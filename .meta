@@ -1,5 +1,6 @@
 {
   "projects": {
+    "_TEMPLATE": "git@github.com:pi-top/template-debian-package-build.git",
     "Alexa-Voice-Service-Integration": "git@github.com:pi-top/Alexa-Voice-Service-Integration.git",
     "i2c-tools-extra": "git@github.com:pi-top/i2c-tools-extra.git",
     "luma.core-deb": "git@github.com:pi-top/luma.core-deb.git",
