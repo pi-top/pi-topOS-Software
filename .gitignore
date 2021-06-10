@@ -1,6 +1,8 @@
 .DS_Store
 
-/_TEMPLATE/
+/_TEMPLATE-GENERIC/
+/_TEMPLATE-PYTHON/
+/_TEMPLATE-PYTHON-UPSTREAM/
 /Alexa-Voice-Service-Integration/
 /i2c-tools-extra/
 /luma.core-deb/
