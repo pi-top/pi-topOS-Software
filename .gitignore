@@ -12,6 +12,7 @@
 /pi-top-Python-Common-Library/
 /pi-top-Python-SDK/
 /pi-top-Python-SDK-Migration-Support/
+/pi-topOS-Recovery/
 /pt-device-manager/
 /pt-display-port/
 /pt-firmware-images/
@@ -22,7 +23,6 @@
 /pt-os-core/
 /pt-os-mods/
 /pt-plym-splash/
-/pt-recovery/
 /pt-shutdown-helper/
 /pt-sys-oled/
 /pt-touchscreen/
