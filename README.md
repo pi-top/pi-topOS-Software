@@ -29,6 +29,22 @@ Waiting until Bullseye:
 * `pt-display-port` (and drop `pt-networking`)
 * `pt-os-mods`
 
+## Packages To Rename
+
+`pt-device-manager` --> `pi-top-Device-Management`
+`pt-display-port` --> `pi-top-4-Display-Port-Support`
+`pt-firmware` --> `pi-top-Device-Firmware`
+`pt-further-link` --> `Further-Link`
+`pt-icon-theme` --> `pi-topOS-Icon-Theme`
+`pt-os-core` --> `pi-topOS-Core-Packages`
+`pt-os-mods` --> `pi-topOS-Modifications`
+`pt-plym-splash` --> `pi-topOS-Bootsplash`
+`pt-shutdown-helper` --> `Start-Menu-Shutdown-Helper`
+`pt-sys-oled` --> `pi-top-4-Miniscreen-App`
+`pt-touchscreen` --> `pi-top-Touchscreen-Support`
+`pt-ui-mods` --> `pi-topOS-UI-Modifications`
+`pt-web-portal` --> `pi-topOS-Web-Portal`
+
 ## Packages Still To Add
 
 Debian Packages from other repositories
