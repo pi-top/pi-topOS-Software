@@ -26,13 +26,12 @@ Require clean-up/rewrite:
 * `pt-firmware` (Combine `pt-firmware-updater` and `pt-firmware-images` into 1 source repository)
 
 Waiting until Bullseye:
-* `pt-display-port` (and drop `pt-networking`)
+* `pt-display-port` (drop `pt-networking`; move to `pt-os-core`)
 * `pt-os-mods`
 
 ## Packages To Rename
 
 `pt-device-manager` --> `pi-top-Device-Management`
-`pt-display-port` --> `pi-top-4-Display-Port-Support`
 `pt-firmware` --> `pi-top-Device-Firmware`
 `pt-further-link` --> `Further-Link`
 `pt-icon-theme` --> `pi-topOS-Icon-Theme`
@@ -41,7 +40,6 @@ Waiting until Bullseye:
 `pt-plym-splash` --> `pi-topOS-Bootsplash`
 `pt-shutdown-helper` --> `Start-Menu-Shutdown-Helper`
 `pt-sys-oled` --> `pi-top-4-Miniscreen-App`
-`pt-touchscreen` --> `pi-top-Touchscreen-Support`
 `pt-ui-mods` --> `pi-topOS-UI-Modifications`
 `pt-web-portal` --> `pi-topOS-Web-Portal`
 
