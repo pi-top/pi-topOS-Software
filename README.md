@@ -31,6 +31,7 @@ Waiting until Bullseye:
 
 ## Packages To Rename
 
+### Source package renaming
 * `pt-device-manager` --> `pi-top-Device-Management`
 * `pt-firmware` --> `pi-top-Device-Firmware`
 * `pt-further-link` --> `Further-Link`
@@ -42,6 +43,9 @@ Waiting until Bullseye:
 * `pt-sys-oled` --> `pi-top-4-Miniscreen-App`
 * `pt-ui-mods` --> `pi-topOS-UI-Modifications`
 * `pt-web-portal` --> `pi-topOS-Web-Portal`
+
+### Binary package renaming
+Drop all `pt-` prefix for all packages that aren't pi-top hardware specific?
 
 ## Packages Still To Add
 
