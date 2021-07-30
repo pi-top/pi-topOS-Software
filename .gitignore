@@ -3,6 +3,7 @@
 /pi-topOS-Recovery/
 /packages/app/ext/raspi2png/
 /packages/app/Alexa-Voice-Service-Integration/
+/packages/app/i2c-tools-extra/
 /packages/app/notify-send.sh-deb/
 /packages/app/pi-top-4-Miniscreen-App/
 /packages/app/pt-device-manager/
@@ -24,7 +25,6 @@
 /packages/lib/ext/luma.oled-deb/
 /packages/lib/ext/python-osc-deb/
 /packages/lib/ext/python-sonic-deb/
-/packages/lib/i2c-tools-extra/
 /packages/lib/pi-top-Python-Common-Library/
 /packages/lib/pi-top-Python-SDK/
 /packages/ui/pt-icon-theme/
