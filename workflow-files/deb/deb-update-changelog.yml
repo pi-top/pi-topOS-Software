@@ -31,6 +31,7 @@ jobs:
           # Don't include previous changelog version bump commits in changelog
           ignore_regex: |
             ${{ env. COMMIT_MESSAGE_PREFIX }}
+            [pre-commit.ci]
 
       - name: Determine current version
         run: |
