@@ -10,7 +10,7 @@
     "packages/app/pt-firmware-updater": "git@github.com:pi-top/pt-firmware-updater-deb.git",
     "packages/app/pt-shutdown-helper": "git@github.com:pi-top/pt-shutdown-helper.git",
     "packages/app/pt-web-portal": "git@github.com:pi-top/pt-web-portal.git",
-    "packages/app/Wi-Fi-Access-Point-and-Station-Mode": "git@github.com:pi-top/Wi-Fi-Access-Point-and-Station-Mode.git"
+    "packages/app/Wi-Fi-Access-Point-and-Station-Mode": "git@github.com:pi-top/Wi-Fi-Access-Point-and-Station-Mode.git",
     "packages/app/pt-further-link": "git@github.com:pi-top/pt-further-link.git",
     "packages/bin/pt-firmware-images": "git@github.com:pi-top/pt-firmware-images-deb.git",
     "packages/conf/pi-top-4-Touchscreen": "git@github.com:pi-top/pi-top-4-Touchscreen.git",
@@ -29,6 +29,6 @@
     "packages/lib/pi-top-Python-SDK": "git@github.com:pi-top/pi-top-Python-SDK.git",
     "packages/ui/pt-icon-theme": "git@github.com:pi-top/pt-icon-theme.git",
     "packages/ui/pt-plym-splash": "git@github.com:pi-top/pt-plym-splash.git",
-    "packages/ui/pt-ui-mods": "git@github.com:pi-top/pt-ui-mods.git",
+    "packages/ui/pt-ui-mods": "git@github.com:pi-top/pt-ui-mods.git"
   }
 }
