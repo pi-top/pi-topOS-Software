@@ -51,6 +51,10 @@ jobs:
           target_architecture: ${{ env.TARGET_ARCHITECTURE }}
           docker_image: ${{ env.DEB_BUILD_DOCKER_IMAGE }}:${{ env.DEB_BUILD_DOCKER_TAG }}
           build_directory: ./artifacts
+          # Optional, repo-specific build environment variables
+          additional_env: |
+            DATA="${{ secrets.DATA }}"
+            TLS_KEY="${{ secrets.TLS_KEY }}"
 
       - name: Generate artifact name
         run: |

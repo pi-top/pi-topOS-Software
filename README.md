@@ -19,6 +19,12 @@ npm i -g meta
 meta git clone git@github.com:pi-top/pi-topOS.git
 ```
 
+### Okay, but how do I work with it?
+You can execute scripts from each repository like so:
+```shell
+meta exec $(pwd)/scripts/update-deb-workflow-files.sh [--parallel]
+```
+
 ## Packages Still To Make Publicly Available
 
 Require clean-up/rewrite:

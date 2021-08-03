@@ -1,8 +1,19 @@
 #!/bin/bash
 
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+####################################
+# Note: DOES THIS NEED TO BE BASH? #
+####################################
 
-root="$(dirname "${DIR}")"
+# Other thoughts -
+# We can make a CLI for managing our repo
+# i.e. use args for things like "--debian"
+
+SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+META_REPO_ROOT_PATH="$(dirname "${SCRIPTS_DIR}")"
+MASTER_WORKFLOWS_PATH="${META_REPO_ROOT_PATH}/workflow-files"
+
+# Build up library of functions
+# and source them for easy functionality
 
 gqc() {
     pre-commit install --allow-missing-config
@@ -33,16 +44,31 @@ gqc() {
     fi
 }
 
-for D in "${root}"/packages/*; do
-    if [[ -d "${D}/debian" ]]; then
-        (
-            echo "$D"
+is_deb_pkg() {
+    [[ -d "debian" ]] || return 1
+    return 0
+}
 
-            rm -f ${D}/.github/workflows/deb*.yml || true
-            cp ./workflow-files/deb/* ${D}/.github/workflows/
+print_current_git_branch() {
+    git rev-parse --abbrev-ref HEAD
+}
 
-            cd "${D}"
-            gqc "Update Debian build workflow files"
-        ) &
-    fi
-done
+if is_deb_pkg; then
+    print_current_git_branch
+    git status
+    git stash
+
+    git checkout master
+
+    rm -f .github/workflows/deb*.yml || true
+    cp ${MASTER_WORKFLOWS_PATH}/master/* .github/workflows/
+
+    gqc "Update master workflow files"
+
+    git checkout bullseye
+
+    rm -f .github/workflows/deb*.yml || true
+    cp ${MASTER_WORKFLOWS_PATH}/bullseye/* .github/workflows/
+
+    gqc "Update bullseye workflow files"
+fi
