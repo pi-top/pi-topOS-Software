@@ -24,8 +24,8 @@
 /packages/lib/ext/luma.oled-deb/
 /packages/lib/ext/python-osc-deb/
 /packages/lib/ext/python-sonic-deb/
-/packages/lib/pi-top-Python-Common-Library/
 /packages/lib/pi-top-Python-SDK/
 /packages/ui/pi-topOS-Icon-Theme/
 /packages/ui/pi-topOS-Bootsplash/
 /packages/ui/pt-ui-mods/
+/packages/upstream/pi-topOS-Upstream-Package-Build/
