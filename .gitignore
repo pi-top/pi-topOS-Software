@@ -2,7 +2,6 @@
 
 
 /pi-topOS-Recovery/
-/packages/app/ext/notify-send.sh-deb/
 /packages/app/Alexa-Voice-Service-Integration/
 /packages/app/i2c-tools-extra/
 /packages/app/pi-top-4-Miniscreen-App/
@@ -18,12 +17,7 @@
 /packages/conf/pt-os-mods/
 /packages/core/pi-topOS-Core-Packages/
 /packages/core/pi-topOS-Core-Services/
-/packages/gui/ext/3d-slash-deb/
 /packages/gui/web-renderer/
-/packages/lib/ext/luma.core-deb/
-/packages/lib/ext/luma.oled-deb/
-/packages/lib/ext/python-osc-deb/
-/packages/lib/ext/python-sonic-deb/
 /packages/lib/pi-top-Python-SDK/
 /packages/ui/pi-topOS-Icon-Theme/
 /packages/ui/pi-topOS-Bootsplash/
