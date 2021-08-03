@@ -7,6 +7,7 @@
 # Other thoughts -
 # We can make a CLI for managing our repo
 # i.e. use args for things like "--debian"
+# "pt-repo-mgr --filter=debian,pybuild,recovery --action=<path_to_script>"
 
 SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 META_REPO_ROOT_PATH="$(dirname "${SCRIPTS_DIR}")"
