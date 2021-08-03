@@ -1,7 +1,6 @@
 {
   "projects": {
     "pi-topOS-Recovery": "git@github.com:pi-top/pi-topOS-Recovery.git",
-    "packages/app/ext/notify-send.sh-deb": "git@github.com:pi-top/notify-send.sh-deb.git",
     "packages/app/Alexa-Voice-Service-Integration": "git@github.com:pi-top/Alexa-Voice-Service-Integration.git",
     "packages/app/i2c-tools-extra": "git@github.com:pi-top/i2c-tools-extra.git",
     "packages/app/pi-top-4-Miniscreen-App": "git@github.com:pi-top/pi-top-4-Miniscreen-App.git",
@@ -17,12 +16,7 @@
     "packages/conf/pt-os-mods": "git@github.com:pi-top/pt-os-mods.git",
     "packages/core/pi-topOS-Core-Packages": "git@github.com:pi-top/pi-topOS-Core-Packages.git",
     "packages/core/pi-topOS-Core-Services": "git@github.com:pi-top/pi-topOS-Core-Services.git",
-    "packages/gui/ext/3d-slash-deb": "git@github.com:pi-top/3d-slash-deb.git",
     "packages/gui/web-renderer": "git@github.com:pi-top/web-renderer.git",
-    "packages/lib/ext/luma.core-deb": "git@github.com:pi-top/luma.core-deb.git",
-    "packages/lib/ext/luma.oled-deb": "git@github.com:pi-top/luma.oled-deb.git",
-    "packages/lib/ext/python-osc-deb": "git@github.com:pi-top/python-osc-deb.git",
-    "packages/lib/ext/python-sonic-deb": "git@github.com:pi-top/python-sonic-deb.git",
     "packages/lib/pi-top-Python-SDK": "git@github.com:pi-top/pi-top-Python-SDK.git",
     "packages/ui/pi-topOS-Icon-Theme": "git@github.com:pi-top/pi-topOS-Icon-Theme.git",
     "packages/ui/pi-topOS-Bootsplash": "git@github.com:pi-top/pi-topOS-Bootsplash.git",
