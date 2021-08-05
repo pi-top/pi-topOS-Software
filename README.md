@@ -49,43 +49,4 @@ Waiting until Bullseye:
 * `pt-sys-oled` --> `pi-top-4-Miniscreen-App`
 * `pt-ui-mods` --> `pi-topOS-UI-Modifications`
 * `pt-web-portal` --> `pi-topOS-Web-Portal`
-
-### Binary package renaming
-Drop all `pt-` prefix for all packages that aren't pi-top hardware specific?
-
-## Packages Still To Add
-
-Debian Packages from other repositories
-* [`papirus-folders`](https://github.com/PapirusDevelopmentTeam/papirus-folders)
-* [`papirus-icon-theme`](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
-
-qtwebengine5 packages (not included in RPi OS due to 'armv7 contamination')
-* `libqt5webengine5`
-* `libqt5webenginecore5`
-* `libqt5webenginewidgets5`
-* `qml-module-qtwebengine`
-* `qtwebengine5-dev`
-
-Python Packages as Debian Package
-* `python3-cbor2`
-* `python3-deprecated`
-* `python3-dlib`
-* `python3-flask-sockets`
-* `python3-gevent-websocket`
-* `python3-imutils`
-* `python3-luma-core`
-* `python3-luma-emulator`
-* `python3-luma-oled`
-* `python3-pycrc`
-* `python3-pyftdi`
-* `python3-pynput`
-* `python3-pyserial`
-* `python3-pyusb`
-* `python3-pyv4l2camera`
-* `python3-pywifi`
-* `python3-simple-pid`
-* `python3-smbus2`
-* `python3-wrapt`
-
-Changes stages for Bullseye
-* Update `pt-networking` with  `pt-display-port`
+* `pt-display-port` --> `pi-top-4-Display-Port`
