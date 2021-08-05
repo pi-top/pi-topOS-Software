@@ -24,29 +24,3 @@ You can execute scripts from each repository like so:
 ```shell
 meta exec $(pwd)/scripts/update-deb-workflow-files.sh [--parallel]
 ```
-
-## Packages Still To Make Publicly Available
-
-Require clean-up/rewrite:
-* `pt-device-manager`
-* `pt-firmware` (Combine `pt-firmware-updater` and `pt-firmware-images` into 1 source repository)
-
-Waiting until Bullseye:
-* `pt-display-port` (drop `pt-networking`; move to `pt-os-core`)
-* `pt-os-mods`
-
-## Packages To Rename
-
-### Source package renaming
-* `pt-device-manager` --> `pi-top-Device-Management`
-* `pt-firmware` --> `pi-top-Device-Firmware`
-* `pt-further-link` --> `Further-Link`
-* `pt-icon-theme` --> `pi-topOS-Icon-Theme`
-* `pt-os-core` --> `pi-topOS-Core-Packages`
-* `pt-os-mods` --> `pi-topOS-Modifications`
-* `pt-plym-splash` --> `pi-topOS-Bootsplash`
-* `pt-shutdown-helper` --> `Start-Menu-Shutdown-Helper`
-* `pt-sys-oled` --> `pi-top-4-Miniscreen-App`
-* `pt-ui-mods` --> `pi-topOS-UI-Modifications`
-* `pt-web-portal` --> `pi-topOS-Web-Portal`
-* `pt-display-port` --> `pi-top-4-Display-Port`
