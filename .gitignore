@@ -1,8 +1,6 @@
 .DS_Store
 
-
 /pi-topOS-Recovery/
-/packages/app/Alexa-Voice-Service-Integration/
 /packages/app/i2c-tools-extra/
 /packages/app/pi-top-4-Miniscreen-App/
 /packages/app/pi-top-Device-Manager/

@@ -1,7 +1,6 @@
 {
   "projects": {
     "pi-topOS-Recovery": "git@github.com:pi-top/pi-topOS-Recovery.git",
-    "packages/app/Alexa-Voice-Service-Integration": "git@github.com:pi-top/Alexa-Voice-Service-Integration.git",
     "packages/app/i2c-tools-extra": "git@github.com:pi-top/i2c-tools-extra.git",
     "packages/app/pi-top-4-Miniscreen-App": "git@github.com:pi-top/pi-top-4-Miniscreen-App.git",
     "packages/app/pi-top-Device-Manager": "git@github.com:pi-top/pi-top-Device-Manager.git",
