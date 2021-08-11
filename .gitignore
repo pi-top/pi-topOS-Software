@@ -13,10 +13,10 @@
 /packages/conf/pi-top-4-Display-Port/
 /packages/conf/pt-os-mods/
 /packages/core/pi-topOS-Core-Packages/
-/packages/core/pi-topOS-Core-Services/
 /packages/gui/pi-topOS-Start-Menu-Quit-Options/
 /packages/gui/web-renderer/
 /packages/lib/pi-top-Python-SDK/
+/packages/serv/pi-topOS-Notify-Services/
 /packages/ui/pi-topOS-Icon-Theme/
 /packages/ui/pi-topOS-Bootsplash/
 /packages/ui/pi-topOS-UI-Modifications/
