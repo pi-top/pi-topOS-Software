@@ -19,7 +19,7 @@
     "packages/lib/pi-top-Python-SDK": "git@github.com:pi-top/pi-top-Python-SDK.git",
     "packages/ui/pi-topOS-Icon-Theme": "git@github.com:pi-top/pi-topOS-Icon-Theme.git",
     "packages/ui/pi-topOS-Bootsplash": "git@github.com:pi-top/pi-topOS-Bootsplash.git",
-    "packages/ui/pt-ui-mods": "git@github.com:pi-top/pt-ui-mods.git",
+    "packages/ui/pi-topOS-UI-Modifications": "git@github.com:pi-top/pi-topOS-UI-Modifications.git",
     "packages/upstream/pi-topOS-Upstream-Package-Build": "git@github.com:pi-top/pi-topOS-Upstream-Package-Build.git"
   }
 }
