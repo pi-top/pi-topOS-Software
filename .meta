@@ -12,6 +12,7 @@
     "packages/conf/pi-top-4-Touchscreen": "git@github.com:pi-top/pi-top-4-Touchscreen.git",
     "packages/conf/pi-top-4-Display-Port": "git@github.com:pi-top/pi-top-4-Display-Port.git",
     "packages/conf/pt-os-mods": "git@github.com:pi-top/pt-os-mods.git",
+    "packages/core/pi-topOS-Archive-Keyring": "git@github.com:pi-top/pi-topOS-Archive-Keyring.git",
     "packages/core/pi-topOS-Core-Packages": "git@github.com:pi-top/pi-topOS-Core-Packages.git",
     "packages/gui/pi-topOS-Start-Menu-Quit-Options": "git@github.com:pi-top/pi-topOS-Start-Menu-Quit-Options.git",
     "packages/gui/web-renderer": "git@github.com:pi-top/web-renderer.git",

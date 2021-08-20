@@ -12,6 +12,7 @@
 /packages/conf/pi-top-4-Touchscreen/
 /packages/conf/pi-top-4-Display-Port/
 /packages/conf/pt-os-mods/
+/packages/core/pi-topOS-Archive-Keyring/
 /packages/core/pi-topOS-Core-Packages/
 /packages/gui/pi-topOS-Start-Menu-Quit-Options/
 /packages/gui/web-renderer/

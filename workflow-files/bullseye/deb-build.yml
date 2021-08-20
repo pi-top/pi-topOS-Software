@@ -53,6 +53,8 @@ jobs:
         with:
           target_architecture: ${{ env.TARGET_ARCHITECTURE }}
           docker_image: ${{ env.DEB_BUILD_DOCKER_IMAGE }}:${{ env.DEB_BUILD_DOCKER_TAG }}
+          signing_key: ${{ secrets.DEB_SIGNING_GPG_KEY }}
+          signing_passphrase: ${{ secrets.DEB_SIGNING_GPG_PASSPHRASE }}
           build_directory: ./artifacts
           # Optional, repo-specific build environment variables
           additional_env: |
@@ -85,9 +87,17 @@ jobs:
             !./artifacts/*.tar.xz
 
       # Upload experimental build
+      # debs
       - uses: docker://lpenz/ghaction-packagecloud:v0.3
         with:
           repository: ${{ env.PACKAGECLOUD_REPO }}/${{ env.OS }}/${{ env.DISTRO }}
         env:
           PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
-          files: ./deb/*.dsc
+
+      # dsc
+      - uses: docker://lpenz/ghaction-packagecloud:v0.3
+        with:
+          repository: ${{ env.PACKAGECLOUD_REPO }}/${{ env.OS }}/${{ env.DISTRO }}
+          files: ./artifacts/${{ env.ARTIFACT_PREFIX }}.dsc
+        env:
+          PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}

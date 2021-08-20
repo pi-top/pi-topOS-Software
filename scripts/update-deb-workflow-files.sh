@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 ####################################
 # Note: DOES THIS NEED TO BE BASH? #
@@ -59,12 +59,12 @@ if is_deb_pkg; then
     git status
     git stash
 
-    git checkout master
+    # git checkout master
 
-    rm -f .github/workflows/deb*.yml || true
-    cp ${MASTER_WORKFLOWS_PATH}/master/* .github/workflows/
+    # rm -f .github/workflows/deb*.yml || true
+    # cp ${MASTER_WORKFLOWS_PATH}/master/* .github/workflows/
 
-    gqc "Update master workflow files"
+    # gqc "Update master workflow files"
 
     git checkout bullseye
 
