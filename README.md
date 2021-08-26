@@ -14,13 +14,16 @@ See [here](https://github.com/mateodelnorte/meta#why-meta) for why meta is a gre
 ## How?
 
 TL;DR
+
 ```
 npm i -g meta
 meta git clone git@github.com:pi-top/pi-topOS.git
 ```
 
 ### Okay, but how do I work with it?
+
 You can execute scripts from each repository like so:
+
 ```shell
 meta exec $(pwd)/scripts/update-deb-workflow-files.sh [--parallel]
 ```

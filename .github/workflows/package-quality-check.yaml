@@ -4,7 +4,7 @@ on:
   push:
   schedule:
     # Run daily at midnight
-    - cron:  '0 0 * * *'
+    - cron: "0 0 * * *"
 
 jobs:
   check-package:
@@ -49,7 +49,6 @@ jobs:
           meta exec "[ ! -f debian/source/options ]   && { echo 'No debian/source/options file'; } || { grep -q '^tar-ignore = Jenkinsfile$' debian/source/options            && { echo 'source/options: OK'; }                 || { echo 'source/options: Missing Jenkinsfile'; }; }"    --parallel
           meta exec "[ ! -f debian/source/options ]   && { echo 'No debian/source/options file'; } || { grep -q '^tar-ignore = Jenkinsfile$' debian/source/options            && { echo 'source/options: OK'; }                 || { echo 'source/options: Missing Jenkinsfile'; }; }"    --parallel
           meta exec "[ ! -f debian/source/options ]   && { echo 'No debian/source/options file'; } || { grep -q '^tar-ignore = .github$'     debian/source/options            && { echo 'source/options: OK'; }                 || { echo 'source/options: Missing .git'; }; }"           --parallel
-
 
       - name: Check that pre-commit is configured correctly
         run: |

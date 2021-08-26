@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Symlink this script to PATH:
+#
+# ln -s $(pwd)/pt-os-meta-exec /usr/local/bin
+
+# Then use as 'pt-os-meta-exec'
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)"
+
+cd "${DIR}/.pt-os-meta-exec"
+if [[ ! -d "${DIR}/.pt-os-meta-exec/src/pt_os_meta_exec/__pycache__/" ]]; then
+  poetry install
+fi
+poetry run pt-os-meta-exec "$@"
