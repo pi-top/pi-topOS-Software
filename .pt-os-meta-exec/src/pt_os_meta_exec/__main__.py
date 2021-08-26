@@ -13,7 +13,7 @@ from pyfiglet import Figlet
 
 class InteractivePrompt(Cmd):
     prompt = "pt-os-meta-exec> "
-    intro = "Type 'exec' followed by the command you would like to run"
+    intro = "Type the command you would like to run against your currently filtered meta repos."
 
     def __init__(self, runner):
         super(InteractivePrompt, self).__init__()
@@ -35,6 +35,7 @@ class InteractivePrompt(Cmd):
     def default(self, inp):
         if inp == "x" or inp == "q":
             return self.do_exit(inp)
+        return self.do_exec(inp)
 
     do_EOF = do_exit
     help_EOF = help_exit
