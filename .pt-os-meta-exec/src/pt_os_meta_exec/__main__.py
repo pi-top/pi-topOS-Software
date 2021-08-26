@@ -109,7 +109,10 @@ class ExecutableScript(object):
         os.chmod(self.path, 0o755)
 
     def cleanup(self):
-        os.remove(self.path)
+        try:
+            os.remove(self.path)
+        except FileNotFoundError:
+            pass
 
 
 class ScriptRunner:
