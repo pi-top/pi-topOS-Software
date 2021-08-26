@@ -79,7 +79,7 @@ class color:
 )
 def main(dry_run, debug, command, parallel, bash_conditions, file_conditions, no_file_conditions):
     """pi-topOS meta-exec."""
-    click.echo(color.BOLD +  Figlet().renderText("pi-topOS meta-exec") + color.END)
+    click.echo(color.BOLD + color.GREEN + Figlet().renderText("pi-topOS meta-exec") + color.END)
 
     # Wrap command around if statements in new file
     handle, path = tempfile.mkstemp(text=True)
