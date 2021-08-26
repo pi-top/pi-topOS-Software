@@ -2,7 +2,7 @@
 import os
 import subprocess
 import tempfile
-
+import pathlib
 import click
 from pyfiglet import Figlet
 
@@ -21,23 +21,16 @@ class color:
 
 
 @click.command()
-############################
-# Group: command OR script #
-############################
-@click.option(
-    "--command",
+###############################
+# Command OR sourced function #
+###############################
+@click.argument(
+    'command',
     type=str,
-    help="The command to run on each matching repo.",
-    default="ls -l",
-    show_default=True,
+    nargs=-1,
+    # help="The command to run on each matching repo. "
+    # "Must be available on the system in a new shell after sourcing lib.bash",
 )
-# TODO: add function support
-# mutually exclusive with command
-# @click.option(
-#     "--function",
-#     type=str,
-#     help="The function to run on each matching repo (sourced from lib.bash).",
-# )
 #####################
 # meta-exec options #
 #####################
@@ -81,6 +74,9 @@ def main(dry_run, debug, command, parallel, bash_conditions, file_conditions, no
     """pi-topOS meta-exec."""
     click.echo(color.BOLD + color.GREEN + Figlet().renderText("pi-topOS meta-exec") + color.END)
 
+    if len(command) == 0:
+        return
+
     # Wrap command around if statements in new file
     handle, path = tempfile.mkstemp(text=True)
     with os.fdopen(handle, "w") as f:
@@ -89,21 +85,24 @@ def main(dry_run, debug, command, parallel, bash_conditions, file_conditions, no
         if debug:
             f.write("set -ex\n")
 
+        f.write(f"source {pathlib.Path(__file__).parent.absolute()}/lib.bash\n")
+
         def add_exit_on_condition_failure(f, array, type_str, condition_prefix="!", condition_suffix=""):
             for elem in array:
-                command = "exit"
+                exit_prefix = ""
                 if debug:
                     f.write(f"echo Checking {type_str}: '{elem}'...\n")
-                    command = f"echo '{type_str.capitalize()} not met: {elem}'; exit"
+                    exit_prefix = f"echo '{type_str.capitalize()} not met: {elem}'; "
                 f.write(
-                    f"if {condition_prefix} {elem} {condition_suffix}; then {command}; fi\n"
+                    f"if {condition_prefix} {elem} {condition_suffix}; then {exit_prefix}exit; fi\n"
                 )
 
         add_exit_on_condition_failure(f, bash_conditions, "bash condition")
         add_exit_on_condition_failure(f, file_conditions, "file condition", condition_prefix="! compgen -G", condition_suffix=">/dev/null")
         add_exit_on_condition_failure(f, no_file_conditions, "no file condition", condition_prefix="compgen -G", condition_suffix=">/dev/null")
 
-        f.write(command + "\n")
+        for cmd in command:
+            f.write(cmd + "\n")
 
     if debug or dry_run:
         click.echo(f"{color.BOLD}{color.UNDERLINE}Script contents:{color.END}")
