@@ -24,9 +24,7 @@ class InteractivePrompt(Cmd):
         self.runner = runner
 
     def do_update_workflow_files(self, userInputStr):
-        print(userInputStr)
         inputFields = userInputStr.split(" ")
-        print(inputFields)
         if len(inputFields) < 2:
             print("No branch specified...")
             return
