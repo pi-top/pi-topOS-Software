@@ -1,6 +1,7 @@
 .DS_Store
 
 /pi-top/app/i2c-tools-extra/
+/pi-top/app/notify-send-ng/
 /pi-top/app/pi-top-4-Miniscreen-App/
 /pi-top/app/pi-top-Device-Manager/
 /pi-top/app/pi-top-Firmware-Updater/

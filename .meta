@@ -1,6 +1,7 @@
 {
   "projects": {
     "pi-top/app/i2c-tools-extra": "git@github.com:pi-top/i2c-tools-extra.git",
+    "pi-top/app/notify-send-ng": "git@github.com:pi-top/notify-send-ng.git",
     "pi-top/app/pi-top-4-Miniscreen-App": "git@github.com:pi-top/pi-top-4-Miniscreen-App.git",
     "pi-top/app/pi-top-Device-Manager": "git@github.com:pi-top/pi-top-Device-Manager.git",
     "pi-top/app/pi-top-Firmware-Updater": "git@github.com:pi-top/pi-top-Firmware-Updater.git",
