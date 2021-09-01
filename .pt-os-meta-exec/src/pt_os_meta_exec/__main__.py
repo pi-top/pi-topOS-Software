@@ -40,11 +40,18 @@ from .terminal import color
 @click.option("--strict/--no-strict", default=True)
 @click.option("--debug/--no-debug")
 @click.option(
+    "repo_str_match",
+    "--repo-match",
+    type=str,
+    help="String matching pattern for repository ID (key in .meta) to run the given command(s).",
+    multiple=True,
+)
+@click.option(
     "bash_conditions",
     "--condition",
     envvar="BASH_CONDITIONS",
     type=str,
-    help="Bash condition to evaluate before running.",
+    help="Bash string condition to return true before running the command on each repo (e.g. 'grep -q 'buster' debian/changelog').",
     multiple=True,
 )
 @click.option(
@@ -52,7 +59,7 @@ from .terminal import color
     "--condition-file",
     envvar="FILE_CONDITIONS",
     type=str,
-    help="File regex condition that must match in order to continue.",
+    help="Bash string condition (including wildcards) to match before running the command on each repo (e.g. 'debian/*').",
     multiple=True,
 )
 @click.option(
@@ -60,13 +67,14 @@ from .terminal import color
     "--condition-no-file",
     envvar="NO_FILE_CONDITIONS",
     type=str,
-    help="File regex condition that must not match in order to continue.",
+    help="Bash string condition (including wildcards) to not match before running the command on each repo (e.g. 'debian/*').",
     multiple=True,
 )
 def main(
     dry_run,
     strict,
     debug,
+    repo_str_match,
     command,
     parallel,
     bash_conditions,
@@ -79,10 +87,19 @@ def main(
     )
 
     conditions = ScriptRunConditions(
-        bash_conditions, file_conditions, no_file_conditions
+        repo_str_match,
+        bash_conditions,
+        file_conditions,
+        no_file_conditions
     )
 
-    opts = ScriptRunOpts(dry_run, strict, debug, parallel, conditions)
+    opts = ScriptRunOpts(
+        dry_run,
+        strict,
+        debug,
+        parallel,
+        conditions
+    )
 
     runner = ScriptRunner(opts)
 

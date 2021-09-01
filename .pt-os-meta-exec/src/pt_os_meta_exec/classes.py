@@ -86,6 +86,7 @@ class InteractivePrompt(Cmd):
 
 @dataclass
 class ScriptRunConditions:
+    repo_str_match: tuple
     bash: tuple
     file: tuple
     no_file: tuple
@@ -115,25 +116,28 @@ class ExecutableScript(object):
             f.write(f"source {pathlib.Path(__file__).parent.absolute()}/lib.bash\n")
 
             def add_exit_on_condition_failure(
-                array, type_str, condition_prefix="!", condition_suffix=""
+                array, condition_prefix="!", condition_suffix=""
             ):
                 for elem in array:
                     f.write(
-                        f"if {condition_prefix} {elem} {condition_suffix}; then exit; fi\n"
+                        f"if {condition_prefix}{elem}{condition_suffix}; then exit; fi\n"
                     )
 
-            add_exit_on_condition_failure(opts.conditions.bash, "bash condition")
+            add_exit_on_condition_failure(
+                opts.conditions.repo_str_match,
+                condition_prefix="[[ $(pwd) != *\"",
+                condition_suffix="\"* ]]",
+            )
+            add_exit_on_condition_failure(opts.conditions.bash)
             add_exit_on_condition_failure(
                 opts.conditions.file,
-                "file condition",
-                condition_prefix="! compgen -G",
-                condition_suffix=">/dev/null",
+                condition_prefix="! compgen -G ",
+                condition_suffix=" >/dev/null",
             )
             add_exit_on_condition_failure(
                 opts.conditions.no_file,
-                "no file condition",
-                condition_prefix="compgen -G",
-                condition_suffix=">/dev/null",
+                condition_prefix="compgen -G ",
+                condition_suffix=" >/dev/null",
             )
 
             for command in commands:
