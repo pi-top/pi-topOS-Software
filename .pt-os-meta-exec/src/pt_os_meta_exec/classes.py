@@ -123,9 +123,21 @@ class ExecutableScript(object):
                         f"if {condition_prefix}{elem}{condition_suffix}; then exit; fi\n"
                     )
 
-            add_exit_on_condition_failure(
+            def add_exit_on_multiple_condition_failure(
+                array, condition_prefix="!", condition_suffix=""
+            ):
+                f.write(f"pathArray=( {' '.join(array)} )\n")
+                f.write("found=0\n")
+                f.write("for path in \"${pathArray[@]}\"; do\n")
+                f.write(
+                    f"\tif {condition_prefix}$path{condition_suffix}; then found=1; break; fi\n"
+                )
+                f.write("done\n")
+                f.write("if [[ \"${found}\" -eq 0 ]]; then exit; fi\n")
+
+            add_exit_on_multiple_condition_failure(
                 opts.conditions.repo_str_match,
-                condition_prefix="[[ $(pwd) != *\"",
+                condition_prefix="[[ $(pwd) == *\"",
                 condition_suffix="\"* ]]",
             )
             add_exit_on_condition_failure(opts.conditions.bash)
