@@ -28,3 +28,14 @@ gqc() {
     fi
     git add --all && git commit -m "${1}" && git push
 }
+
+# Print Github repository page
+repo_url() {
+    repo_name=$(basename `git rev-parse --show-toplevel`)
+    echo "https://github.com/pi-top/${repo_name}"
+}
+
+# Open github page for repository
+open_browser() {
+    open "$(repo_url)"
+}
