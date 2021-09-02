@@ -29,9 +29,18 @@ jobs:
           sudo apt install -y dpkg-dev
           echo "CURRENT_VERSION=$(dpkg-parsechangelog -Sversion)" >> $GITHUB_ENV
 
+      - name: Clean latest tag string
+        run: |
+          LATEST_TAG_COMPLETE=${{ steps.version.outputs.tag_latest }}
+          if [[ "${LATEST_TAG_COMPLETE:0:1}" == "v" ]]; then
+            echo "LATEST_TAG=${LATEST_TAG_COMPLETE:1}" >> $GITHUB_ENV
+          else
+            echo "LATEST_TAG=${LATEST_TAG_COMPLETE}" >> $GITHUB_ENV
+          fi
+
       - name: Confirm version is higher than last tagged version
-        if: steps.version.outputs.tag_latest != ""
-        run: dpkg --compare-versions ${{ env.CURRENT_VERSION }} gt ${{ steps.version.outputs.tag_latest }}
+        if: ${{ env.LATEST_TAG != '' }}
+        run: dpkg --compare-versions ${{ env.CURRENT_VERSION }} gt ${{ env.LATEST_TAG }}
 
       - name: Determine architecture to use from package info
         # If architecture is 'all', then it can be compiled on host architecture
@@ -78,6 +87,10 @@ jobs:
           repository: ${{ env.PACKAGECLOUD_REPO }}/${{ env.OS }}/${{ env.DISTRO }}
         env:
           PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
+
+      - name: Generate artifact name
+        run: |
+          echo "ARTIFACT_PREFIX=$(basename -s .dsc "$(find . -name "*.dsc")")" >> $GITHUB_ENV
 
       # dsc
       - uses: docker://lpenz/ghaction-packagecloud:v0.3
