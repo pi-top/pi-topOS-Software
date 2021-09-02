@@ -14,8 +14,8 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)"
 
-cd "${DIR}/.pt-os-meta-exec"
-if [[ ! -d "${DIR}/.pt-os-meta-exec/src/pt_os_meta_exec/__pycache__/" ]]; then
+cd "${DIR}/scripts/pt-os-meta-exec"
+if [[ ! -d "${DIR}/scripts/pt-os-meta-exec/src/pt_os_meta_exec/__pycache__/" ]]; then
   poetry install
 fi
 poetry run pt-os-meta-exec "$@"
