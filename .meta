@@ -18,7 +18,6 @@
     "pi-top/gui/pi-topOS-Start-Menu-Quit-Options": "git@github.com:pi-top/pi-topOS-Start-Menu-Quit-Options.git",
     "pi-top/gui/web-renderer": "git@github.com:pi-top/web-renderer.git",
     "pi-top/lib/pi-top-Python-SDK": "git@github.com:pi-top/pi-top-Python-SDK.git",
-    "pi-top/serv/pi-topOS-Notify-Services": "git@github.com:pi-top/pi-topOS-Notify-Services.git",
     "pi-top/ui/pi-topOS-Icon-Theme": "git@github.com:pi-top/pi-topOS-Icon-Theme.git",
     "pi-top/ui/pi-topOS-Bootsplash": "git@github.com:pi-top/pi-topOS-Bootsplash.git",
     "pi-top/ui/pi-topOS-UI-Modifications": "git@github.com:pi-top/pi-topOS-UI-Modifications.git",
