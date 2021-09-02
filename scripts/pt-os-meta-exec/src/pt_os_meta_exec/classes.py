@@ -187,4 +187,4 @@ class ScriptRunner:
         if self.opts.parallel:
             args.append("--parallel")
 
-        subprocess.run(args, cwd="..")
+        subprocess.run(args)
