@@ -116,7 +116,7 @@ class ExecutableScript(object):
             f.write(f"source {pathlib.Path(__file__).parent.absolute()}/lib.bash\n")
 
             def add_exit_on_condition_failure(
-                array, condition_prefix="!", condition_suffix=""
+                array, condition_prefix="! ", condition_suffix=""
             ):
                 for elem in array:
                     f.write(
@@ -124,7 +124,7 @@ class ExecutableScript(object):
                     )
 
             def add_exit_on_multiple_condition_failure(
-                array, condition_prefix="!", condition_suffix=""
+                array, condition_prefix="! ", condition_suffix=""
             ):
                 f.write(f"pathArray=( {' '.join(array)} )\n")
                 f.write("found=0\n")
@@ -135,11 +135,12 @@ class ExecutableScript(object):
                 f.write("done\n")
                 f.write("if [[ \"${found}\" -eq 0 ]]; then exit; fi\n")
 
-            add_exit_on_multiple_condition_failure(
-                opts.conditions.repo_str_match,
-                condition_prefix="[[ $(pwd) == *\"",
-                condition_suffix="\"* ]]",
-            )
+            if opts.conditions.repo_str_match:
+                add_exit_on_multiple_condition_failure(
+                    opts.conditions.repo_str_match,
+                    condition_prefix="[[ $(pwd) == *\"",
+                    condition_suffix="\"* ]]",
+                )
             add_exit_on_condition_failure(opts.conditions.bash)
             add_exit_on_condition_failure(
                 opts.conditions.file,
