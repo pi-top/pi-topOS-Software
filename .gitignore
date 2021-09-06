@@ -8,7 +8,6 @@
 /pi-top/conf/pi-top-4-Touchscreen/
 /pi-top/conf/pi-topOS-Network-Modifications/
 /pi-top/conf/pi-topOS-System-Modifications/
-/pi-top/conf/Wi-Fi-Access-Point-and-Station-Mode/
 /pi-top/core/pi-top-Device-Manager/
 /pi-top/core/pi-top-Python-SDK/
 /pi-top/core/pi-topOS-Archive-Keyring/
@@ -21,6 +20,7 @@
 /pi-top/utils/Further-Link/
 /pi-top/utils/i2c-tools-extra/
 /pi-top/utils/notify-send-ng/
+/pi-top/utils/Wi-Fi-Access-Point-and-Station-Mode/
 /extern/pi-topOS-Upstream-Package-Build/
 
 # Byte-compiled / optimized / DLL files
