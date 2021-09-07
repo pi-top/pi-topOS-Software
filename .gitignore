@@ -2,7 +2,6 @@
 
 /pi-top/app/pi-top-4-Miniscreen/
 /pi-top/app/pi-top-Firmware-Updater/
-/pi-top/app/pi-topOS-Web-Portal/
 /pi-top/bin/pt-firmware-images/
 /pi-top/conf/pi-top-4-Display-Port/
 /pi-top/conf/pi-top-4-Touchscreen/
@@ -12,6 +11,7 @@
 /pi-top/core/pi-top-Python-SDK/
 /pi-top/core/pi-topOS-Archive-Keyring/
 /pi-top/core/pi-topOS-Core-Packages/
+/pi-top/core/pi-topOS-Web-Portal/
 /pi-top/gui/pi-topOS-Start-Menu-Quit-Options/
 /pi-top/gui/web-renderer/
 /pi-top/ui/pi-topOS-Bootsplash/

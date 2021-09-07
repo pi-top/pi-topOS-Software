@@ -2,7 +2,6 @@
   "projects": {
     "pi-top/app/pi-top-4-Miniscreen": "git@github.com:pi-top/pi-top-4-Miniscreen.git",
     "pi-top/app/pi-top-Firmware-Updater": "git@github.com:pi-top/pi-top-Firmware-Updater.git",
-    "pi-top/app/pi-topOS-Web-Portal": "git@github.com:pi-top/pi-topOS-Web-Portal.git",
     "pi-top/bin/pt-firmware-images": "git@github.com:pi-top/pt-firmware-images.git",
     "pi-top/conf/pi-top-4-Display-Port": "git@github.com:pi-top/pi-top-4-Display-Port.git",
     "pi-top/conf/pi-top-4-Touchscreen": "git@github.com:pi-top/pi-top-4-Touchscreen.git",
@@ -12,6 +11,7 @@
     "pi-top/core/pi-top-Python-SDK": "git@github.com:pi-top/pi-top-Python-SDK.git",
     "pi-top/core/pi-topOS-Archive-Keyring": "git@github.com:pi-top/pi-topOS-Archive-Keyring.git",
     "pi-top/core/pi-topOS-Core-Packages": "git@github.com:pi-top/pi-topOS-Core-Packages.git",
+    "pi-top/core/pi-topOS-Web-Portal": "git@github.com:pi-top/pi-topOS-Web-Portal.git",
     "pi-top/gui/pi-topOS-Start-Menu-Quit-Options": "git@github.com:pi-top/pi-topOS-Start-Menu-Quit-Options.git",
     "pi-top/gui/web-renderer": "git@github.com:pi-top/web-renderer.git",
     "pi-top/ui/pi-topOS-Bootsplash": "git@github.com:pi-top/pi-topOS-Bootsplash.git",
