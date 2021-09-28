@@ -7,7 +7,7 @@
     "pi-top/conf/pi-top-4-Touchscreen": "git@github.com:pi-top/pi-top-4-Touchscreen.git",
     "pi-top/conf/pi-topOS-Network-Modifications": "git@github.com:pi-top/pi-topOS-Network-Modifications.git",
     "pi-top/conf/pi-topOS-System-Modifications": "git@github.com:pi-top/pi-topOS-System-Modifications.git",
-    "pi-top/core/pi-top-Device-Manager": "git@github.com:pi-top/pi-top-Device-Manager.git",
+    "pi-top/core/pi-topd": "git@github.com:pi-top/pi-topd.git",
     "pi-top/core/pi-top-Python-SDK": "git@github.com:pi-top/pi-top-Python-SDK.git",
     "pi-top/core/pi-topOS-Archive-Keyring": "git@github.com:pi-top/pi-topOS-Archive-Keyring.git",
     "pi-top/core/pi-topOS-Core-Packages": "git@github.com:pi-top/pi-topOS-Core-Packages.git",
