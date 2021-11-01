@@ -36,9 +36,19 @@ from .terminal import color
 ##################
 # Script options #
 ##################
-@click.option("--dry-run/--no-dry-run")
-@click.option("--strict/--no-strict", default=True)
-@click.option("--debug/--no-debug")
+@click.option(
+    "--dry-run/--no-dry-run",
+    help="Simulate command.",
+)
+@click.option(
+    "--strict/--no-strict",,
+    help="Apply 'set -euo pipefail' to command(s)/script to run.",
+    default=True
+)
+@click.option(
+    "--debug/--no-debug",
+    help="Apply 'set -x' to command(s)/script to run.",
+)
 @click.option(
     "repo_str_match",
     "--repo-match",
