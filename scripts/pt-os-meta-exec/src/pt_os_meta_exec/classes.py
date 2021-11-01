@@ -11,7 +11,6 @@ import click
 
 from .terminal import color
 
-
 masterWorkflowsPath = str(pathlib.Path(__file__).parent.absolute()) + "/workflow-files"
 
 
@@ -128,18 +127,18 @@ class ExecutableScript(object):
             ):
                 f.write(f"pathArray=( {' '.join(array)} )\n")
                 f.write("found=0\n")
-                f.write("for path in \"${pathArray[@]}\"; do\n")
+                f.write('for path in "${pathArray[@]}"; do\n')
                 f.write(
                     f"\tif {condition_prefix}$path{condition_suffix}; then found=1; break; fi\n"
                 )
                 f.write("done\n")
-                f.write("if [[ \"${found}\" -eq 0 ]]; then exit; fi\n")
+                f.write('if [[ "${found}" -eq 0 ]]; then exit; fi\n')
 
             if opts.conditions.repo_str_match:
                 add_exit_on_multiple_condition_failure(
                     opts.conditions.repo_str_match,
-                    condition_prefix="[[ $(pwd) == *\"",
-                    condition_suffix="\"* ]]",
+                    condition_prefix='[[ $(pwd) == *"',
+                    condition_suffix='"* ]]',
                 )
             add_exit_on_condition_failure(opts.conditions.bash)
             add_exit_on_condition_failure(

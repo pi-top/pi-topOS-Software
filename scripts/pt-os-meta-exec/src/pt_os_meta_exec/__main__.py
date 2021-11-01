@@ -2,12 +2,8 @@
 import click
 from pyfiglet import Figlet
 
-from .classes import InteractivePrompt
-from .classes import ScriptRunConditions
-from .classes import ScriptRunner
-from .classes import ScriptRunOpts
+from .classes import InteractivePrompt, ScriptRunConditions, ScriptRunner, ScriptRunOpts
 from .terminal import color
-
 
 # TODO: set opts in interactive mode
 
@@ -41,9 +37,9 @@ from .terminal import color
     help="Simulate command.",
 )
 @click.option(
-    "--strict/--no-strict",,
+    "--strict/--no-strict",
     help="Apply 'set -euo pipefail' to command(s)/script to run.",
-    default=True
+    default=True,
 )
 @click.option(
     "--debug/--no-debug",
@@ -97,19 +93,10 @@ def main(
     )
 
     conditions = ScriptRunConditions(
-        repo_str_match,
-        bash_conditions,
-        file_conditions,
-        no_file_conditions
+        repo_str_match, bash_conditions, file_conditions, no_file_conditions
     )
 
-    opts = ScriptRunOpts(
-        dry_run,
-        strict,
-        debug,
-        parallel,
-        conditions
-    )
+    opts = ScriptRunOpts(dry_run, strict, debug, parallel, conditions)
 
     runner = ScriptRunner(opts)
 

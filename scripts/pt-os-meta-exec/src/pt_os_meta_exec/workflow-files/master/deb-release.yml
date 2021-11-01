@@ -22,7 +22,6 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-
       - name: Get latest semver tag and latest version in changelog
         run: |
           set -x
