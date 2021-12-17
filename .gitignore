@@ -21,8 +21,8 @@
 /packages/pi-top/utils/i2c-tools-extra/
 /packages/pi-top/utils/notify-send-ng/
 /packages/pi-top/utils/Wi-Fi-Access-Point-and-Station-Mode/
-/recovery/
 /packages/upstream/
+/recovery/
 
 
 # Byte-compiled / optimized / DLL files
