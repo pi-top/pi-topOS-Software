@@ -1,26 +1,26 @@
 .DS_Store
 
-/pi-top/app/pi-top-4-Miniscreen/
-/pi-top/app/pi-top-Firmware-Updater/
-/pi-top/bin/pt-firmware-images/
-/pi-top/conf/pi-top-4-Display-Port/
-/pi-top/conf/pi-top-4-Touchscreen/
-/pi-top/conf/pi-topOS-Network-Modifications/
-/pi-top/conf/pi-topOS-System-Modifications/
-/pi-top/core/pi-topd/
-/pi-top/core/pi-top-Python-SDK/
-/pi-top/core/pi-topOS-Archive-Keyring/
-/pi-top/core/pi-topOS-Core-Packages/
-/pi-top/core/pi-topOS-Web-Portal/
-/pi-top/gui/pi-topOS-Start-Menu-Quit-Options/
-/pi-top/gui/web-renderer/
-/pi-top/ui/pi-topOS-Bootsplash/
-/pi-top/ui/pi-topOS-Icon-Theme/
-/pi-top/ui/pi-topOS-UI-Modifications/
-/pi-top/utils/Further-Link/
-/pi-top/utils/i2c-tools-extra/
-/pi-top/utils/notify-send-ng/
-/pi-top/utils/Wi-Fi-Access-Point-and-Station-Mode/
+/pi-top/packages/app/pi-top-4-Miniscreen/
+/pi-top/packages/app/pi-top-Firmware-Updater/
+/pi-top/packages/conf/pi-top-4-Display-Port/
+/pi-top/packages/conf/pi-top-4-Touchscreen/
+/pi-top/packages/conf/pi-topOS-Network-Modifications/
+/pi-top/packages/conf/pi-topOS-System-Modifications/
+/pi-top/packages/core/pi-topd/
+/pi-top/packages/core/pi-top-Python-SDK/
+/pi-top/packages/core/pi-topOS-Archive-Keyring/
+/pi-top/packages/core/pi-topOS-Core-Packages/
+/pi-top/packages/core/pi-topOS-Web-Portal/
+/pi-top/packages/gui/pi-topOS-Start-Menu-Quit-Options/
+/pi-top/packages/gui/web-renderer/
+/pi-top/packages/ui/pi-topOS-Bootsplash/
+/pi-top/packages/ui/pi-topOS-Icon-Theme/
+/pi-top/packages/ui/pi-topOS-UI-Modifications/
+/pi-top/packages/utils/Further-Link/
+/pi-top/packages/utils/i2c-tools-extra/
+/pi-top/packages/utils/notify-send-ng/
+/pi-top/packages/utils/Wi-Fi-Access-Point-and-Station-Mode/
+/pi-top/recovery/pi-topOS-Recovery/
 /extern/pi-topOS-Upstream-Package-Build/
 
 # Byte-compiled / optimized / DLL files
