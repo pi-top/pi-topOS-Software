@@ -9,7 +9,7 @@
     "packages/pi-top/conf/pi-topOS-System-Modifications": "git@github.com:pi-top/pi-topOS-System-Modifications.git",
     "packages/pi-top/core/pi-topd": "git@github.com:pi-top/pi-topd.git",
     "packages/pi-top/core/pi-top-Python-SDK": "git@github.com:pi-top/pi-top-Python-SDK.git",
-    "packages/pi-top/core/pi-topOS-Archive-Keyring": "git@github.com:pi-top/pi-topOS-Archive-Keyring.git",
+    "packages/pi-top/core/pi-topOS-Apt-Source": "git@github.com:pi-top/pi-topOS-Apt-Source.git",
     "packages/pi-top/core/pi-topOS-Core-Packages": "git@github.com:pi-top/pi-topOS-Core-Packages.git",
     "packages/pi-top/core/pi-topOS-Web-Portal": "git@github.com:pi-top/pi-topOS-Web-Portal.git",
     "packages/pi-top/gui/pi-topOS-Start-Menu-Quit-Options": "git@github.com:pi-top/pi-topOS-Start-Menu-Quit-Options.git",
