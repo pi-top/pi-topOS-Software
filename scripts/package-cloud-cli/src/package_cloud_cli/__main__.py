@@ -16,7 +16,7 @@ logging.getLogger("urllib3").setLevel(logging.INFO)
 @click.argument("repo", envvar="PC_REPO")
 @click.argument("user", envvar="PC_USER")
 @click.argument("distro", envvar="PC_DISTRO")
-@click.argument("distro_version", envvar="PC_DISTRO_VERSION")
+@click.argument("distro-version", envvar="PC_DISTRO_VERSION")
 @click.argument("api_token", envvar="PC_API_TOKEN")
 @click.option(
     "--list-packages", is_flag=True, help="Lists all packages in the repository."
@@ -24,7 +24,7 @@ logging.getLogger("urllib3").setLevel(logging.INFO)
 @click.option("--package-name", type=str, help="Package to look for.")
 @click.option("--cleanup", is_flag=True)
 @click.option(
-    "--versions_to_keep",
+    "--versions-to-keep",
     type=int,
     default=10,
     help="Maximum number of versions of a package to keep in the repository. Defaults to 10.",
