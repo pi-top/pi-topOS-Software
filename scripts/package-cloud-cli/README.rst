@@ -8,7 +8,7 @@ Installation
 
 Install locally running pip in the :code:`package-cloud-cli` folder:
 
-.. code-block:
+.. code-block::
 
   $ cd pi-topOS-Software/scripts/package-cloud-cli
   $ pip3 install -e .
