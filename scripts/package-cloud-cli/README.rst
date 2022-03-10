@@ -1,7 +1,7 @@
 PackageCloud CLI
 ================
 
-CLI to manage PackageCloud repositories, using the PackageCloud `Web API <https://packagecloud.io/docs/api>`_ .
+CLI to manage PackageCloud repositories, using the their `Web API <https://packagecloud.io/docs/api>`_ .
 
 Usage
 -----
@@ -9,6 +9,7 @@ Usage
 .. code-block::
 
   $ package-cloud --help
+
   Usage: package-cloud [OPTIONS] REPO USER DISTRO DISTRO_VERSION API_TOKEN
 
     REPO: Name of the PackageCloud repository. Can be passed through environment
@@ -26,15 +27,16 @@ Usage
     variable 'PC_API_TOKEN'
 
   Options:
-    --list-packages                 Lists all packages in the repository.
-    --package-name TEXT             Package to look for.
+    --all-packages                  Queries all packages in the repository.
+    --package-name TEXT             Specify a particular package to target.
     --cleanup
-    --versions_to_keep INTEGER      Maximum number of versions of a package to
+    --versions-to-keep INTEGER      Maximum number of versions of a package to
                                     keep in the repository. Defaults to 10.
     -v, --verbosity [DEBUG|INFO|WARNING|ERROR|CRITICAL]
                                     Verbosity level.
+    --dry-run                       Perform a dry-run without destroying or
+                                    modifying any package.
     --help                          Show this message and exit.
-
 
 
 Example
@@ -71,7 +73,7 @@ Instead of providing the repository information explicitly, these values can be 
 
 .. code-block:: bash
 
-  $ package-cloud --list-packages
+  $ package-cloud --all-packages
   Package: usb-eth-gadget (2 versions), latest: 1.1.4-3
   Versions: [1.1.4-2, 1.1.4-3]
 
@@ -100,10 +102,10 @@ Instead of providing the repository information explicitly, these values can be 
   Versions: [5.0.1-1, 5.0.1-2, 5.2.0-1, 5.3.0-2, 5.4.0-1, 5.4.0-2, 5.4.0-3, 5.5.0-1, 5.5.0-2]
 
 
-- Cleanup old versions of packages
+- Cleanup old versions of one package
 
-The :code:`--cleanup` flag tells the CLI to cleanup old versions of a package. By default, it will keep 10 versions of a package in the repository.
-The :code:`--versions-to-keep` flag overrides this value.
+The :code:`--cleanup` flag tells the CLI to cleanup old versions of a package. By default, it will keep at least 10 versions of a package in the repository.
+The :code:`--versions-to-keep` flag overrides this default value.
 
 .. code-block:: bash
 
@@ -117,3 +119,29 @@ The :code:`--versions-to-keep` flag overrides this value.
      Deleting: 5.1.0-5
      Deleting: 5.2.0-1
   Kept versions: [5.2.1-1, 5.3.1-1]
+
+- Cleanup old versions of all packages
+
+.. code-block:: bash
+
+  $ package-cloud --all-packages --cleanup
+
+  Package: usb-eth-gadget (2 versions), latest: 1.1.4-3
+  Versions: [1.1.4-2, 1.1.4-3]
+  Deleting old versions: will delete 0 and leave 2
+  Kept versions: [1.1.4-2, 1.1.4-3]
+
+  Package: web-renderer (2 versions), latest: 5.0.0-1
+  Versions: [4.1.1-1, 5.0.0-1]
+  Deleting old versions: will delete 0 and leave 2
+  Kept versions: [4.1.1-1, 5.0.0-1]
+
+  Package: web-renderer-dbgsym (2 versions), latest: 5.0.0-1
+  Versions: [4.1.1-1, 5.0.0-1]
+  Deleting old versions: will delete 0 and leave 2
+  Kept versions: [4.1.1-1, 5.0.0-1]
+
+  Package: wifi-ap-sta (6 versions), latest: 0.7.3-1
+  Versions: [0.5.0-1, 0.5.0-2, 0.6.0-1, 0.7.1-1, 0.7.2-1, 0.7.3-1]
+  Deleting old versions: will delete 0 and leave 6
+  Kept versions: [0.5.0-1, 0.5.0-2, 0.6.0-1, 0.7.1-1, 0.7.2-1, 0.7.3-1]

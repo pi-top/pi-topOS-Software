@@ -19,9 +19,11 @@ logging.getLogger("urllib3").setLevel(logging.INFO)
 @click.argument("distro-version", envvar="PC_DISTRO_VERSION")
 @click.argument("api_token", envvar="PC_API_TOKEN")
 @click.option(
-    "--list-packages", is_flag=True, help="Lists all packages in the repository."
+    "--all-packages", is_flag=True, help="Queries all packages in the repository."
 )
-@click.option("--package-name", type=str, help="Package to look for.")
+@click.option(
+    "--package-name", type=str, help="Specify a particular package to target."
+)
 @click.option("--cleanup", is_flag=True)
 @click.option(
     "--versions-to-keep",
@@ -38,14 +40,18 @@ logging.getLogger("urllib3").setLevel(logging.INFO)
     default="INFO",
     help="Verbosity level.",
 )
-@click.option("--dry-run", is_flag=True)
+@click.option(
+    "--dry-run",
+    is_flag=True,
+    help="Perform a dry-run without destroying or modifying any package.",
+)
 def main(
     repo,
     user,
     distro,
     distro_version,
     api_token,
-    list_packages,
+    all_packages,
     package_name,
     cleanup,
     versions_to_keep,
@@ -81,7 +87,7 @@ def main(
     if package_name:
         package = manager.get_package(package_name)
         packages.append(package)
-    elif list_packages:
+    elif all_packages:
         packages = manager.list_packages()
 
     for package in packages:
