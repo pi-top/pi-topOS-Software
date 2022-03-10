@@ -109,6 +109,8 @@ class PackageCloudManager:
 
         if request_type == RequestType.GET:
             request_response = requests.get(url)
+            if request_response.status_code != 200:
+                raise Exception(f"{request_response.text}")
 
             # Responses might have headers for pagination
             # See https://packagecloud.io/docs/api#pagination
@@ -207,7 +209,14 @@ class PackageCloudManager:
             f"Deleting old versions: will delete {versions_to_delete} and leave {versions_to_keep}"
         )
         for version_obj in versions[0:versions_to_delete]:
-            print(f"Deleting: {version_obj.version_str} - {version_obj.destroy_url}")
-            # self._send_request(url=version_obj.destroy_url, request_type=RequestType.DELETE, callback=None)
+            print(f"\tDeleting: {version_obj.version_str} - {version_obj.destroy_url}")
+            try:
+                self._send_request(
+                    url=version_obj.destroy_url,
+                    request_type=RequestType.DELETE,
+                    callback=None,
+                )
+            except Exception as e:
+                logger.error(f"{e}")
 
         print(f"Kept versions: {versions[versions_to_delete:]}")

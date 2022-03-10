@@ -111,9 +111,9 @@ The :code:`--versions-to-keep` flag overrides this value.
   Package: pi-topd (7 versions), latest: 5.3.1-1
   Versions: [5.1.0-2, 5.1.0-3, 5.1.0-4, 5.1.0-5, 5.2.0-1, 5.2.1-1, 5.3.1-1]
   Deleting old versions: will delete 5 and leave 2
-  Deleting: 5.1.0-2
-  Deleting: 5.1.0-3
-  Deleting: 5.1.0-4
-  Deleting: 5.1.0-5
-  Deleting: 5.2.0-1
+     Deleting: 5.1.0-2
+     Deleting: 5.1.0-3
+     Deleting: 5.1.0-4
+     Deleting: 5.1.0-5
+     Deleting: 5.2.0-1
   Kept versions: [5.2.1-1, 5.3.1-1]
