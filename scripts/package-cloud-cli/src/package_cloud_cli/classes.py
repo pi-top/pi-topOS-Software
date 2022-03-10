@@ -127,6 +127,8 @@ class PackageCloudManager:
 
         elif request_type == RequestType.DELETE:
             request_response = requests.delete(url)
+            if request_response.status_code != 200:
+                raise Exception(f"{request_response.text}")
 
         else:
             raise NotImplementedError
@@ -179,7 +181,9 @@ class PackageCloudManager:
                 latest = candidate
         return latest
 
-    def delete_old_versions(self, versions: List[PackageFragment], keep: int) -> None:
+    def delete_old_versions(
+        self, versions: List[PackageFragment], keep: int, dry_run: bool = False
+    ) -> None:
         def find_duplicates(versions: List[PackageFragment]) -> List[str]:
             seen = set()
             duplicates = []
@@ -210,6 +214,8 @@ class PackageCloudManager:
         )
         for version_obj in versions[0:versions_to_delete]:
             print(f"\tDeleting: {version_obj.version_str} - {version_obj.destroy_url}")
+            if dry_run:
+                continue
             try:
                 self._send_request(
                     url=version_obj.destroy_url,

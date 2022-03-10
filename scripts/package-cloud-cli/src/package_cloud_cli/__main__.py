@@ -38,6 +38,7 @@ logging.getLogger("urllib3").setLevel(logging.INFO)
     default="INFO",
     help="Verbosity level.",
 )
+@click.option("--dry-run", is_flag=True)
 def main(
     repo,
     user,
@@ -49,6 +50,7 @@ def main(
     cleanup,
     versions_to_keep,
     verbosity,
+    dry_run,
 ):
     """
     REPO: Name of the PackageCloud repository. Can be passed through environment variable 'PC_REPO'
@@ -93,7 +95,9 @@ def main(
 
         if cleanup:
             try:
-                manager.delete_old_versions(versions=versions, keep=versions_to_keep)
+                manager.delete_old_versions(
+                    versions=versions, keep=versions_to_keep, dry_run=dry_run
+                )
             except Exception as e:
                 logger.error(f"{e}")
 
