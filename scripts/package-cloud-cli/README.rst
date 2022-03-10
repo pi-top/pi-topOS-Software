@@ -102,8 +102,8 @@ Instead of providing the repository information explicitly, these values can be 
 
 - Cleanup old versions of packages
 
-The `--cleanup` flag tells the CLI to cleanup old versions of a package. By default, it will keep 10 versions of a package in the repository.
-The `--versions-to-keep` flag overrides this value.
+The :code:`--cleanup` flag tells the CLI to cleanup old versions of a package. By default, it will keep 10 versions of a package in the repository.
+The :code:`--versions-to-keep` flag overrides this value.
 
 .. code-block:: bash
 
