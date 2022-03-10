@@ -67,9 +67,10 @@ Instead of providing the repository information explicitly, these values can be 
 
 - List all packages in a repository
 
-  Assuming that the environment variables `PC_USER`, `PC_DISTRO`, `PC_DISTRO_VERSION` and `PC_API_TOKEN` are set:
+  Assuming that the environment variables :code:`PC_USER`, :code:`PC_DISTRO`, :code:`PC_DISTRO_VERSION` and :code:`PC_API_TOKEN` are set:
 
 .. code-block:: bash
+
   $ package-cloud --list-packages
   Package: usb-eth-gadget (2 versions), latest: 1.1.4-3
   Versions: [1.1.4-2, 1.1.4-3]
@@ -97,8 +98,6 @@ Instead of providing the repository information explicitly, these values can be 
 
   Package: pt-os-notify-services (9 versions), latest: 5.5.0-2
   Versions: [5.0.1-1, 5.0.1-2, 5.2.0-1, 5.3.0-2, 5.4.0-1, 5.4.0-2, 5.4.0-3, 5.5.0-1, 5.5.0-2]
-
-  ...
 
 
 - Cleanup old versions of packages
