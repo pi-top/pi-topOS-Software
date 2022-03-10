@@ -3,6 +3,18 @@ PackageCloud CLI
 
 CLI to manage PackageCloud repositories, using the their `Web API <https://packagecloud.io/docs/api>`_ .
 
+Installation
+------------
+
+Install locally running pip in the :code:`package-cloud-cli` folder:
+
+.. code-block:
+
+  $ cd pi-topOS-Software/scripts/package-cloud-cli
+  $ pip3 install -e .
+
+This will install the :code:`package_cloud_cli` python package and the :code:`package-cloud` CLI tool into your machine.
+
 Usage
 -----
 
