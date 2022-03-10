@@ -1,7 +1,7 @@
 PackageCloud CLI
 ================
 
-CLI to manage PackageCloud repositories.
+CLI to manage PackageCloud repositories, using the PackageCloud `Web API <https://packagecloud.io/docs/api>`_ .
 
 Usage
 -----
