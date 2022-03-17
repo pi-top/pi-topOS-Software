@@ -19,6 +19,18 @@ class PackageCloudRepoConfiguration:
     distribution: str
     distribution_version: str
 
+    @property
+    def base(self):
+        return f"https://{self.api_token}:@packagecloud.io/"
+
+    @property
+    def base_url(self):
+        return f"{self.base}/api/v1/repos/{self.user}/{self.repository}"
+
+    @property
+    def packages_url(self):
+        return f"{self.base_url}/packages/deb.json"
+
 
 @dataclass
 class PackageVersion:
@@ -86,16 +98,13 @@ class RequestType(Enum):
 class PackageCloudManager:
     def __init__(self, config: PackageCloudRepoConfiguration) -> None:
         self.config = config
-        self.BASE = f"https://{config.api_token}:@packagecloud.io/"
-        self.BASE_URL = f"{self.BASE}/api/v1/repos/{config.user}/{config.repository}"
-        self.PACKAGES_URL = f"{self.BASE_URL}/packages/deb.json"
 
     def _send_request(
         self, url: str, request_type: RequestType, callback: Optional[Callable]
     ) -> None:
         def format_url(url):
             if url.startswith("/"):
-                url = self.BASE + url
+                url = self.config.base + url
             if self.config.api_token in url:
                 return url
             u = url.split("https://")
@@ -148,7 +157,7 @@ class PackageCloudManager:
                 packages.append(PackageVersion(**package))
 
         self._send_request(
-            self.PACKAGES_URL,
+            self.config.packages_url,
             request_type=RequestType.GET,
             callback=parse_packages_response,
         )
@@ -213,7 +222,7 @@ class PackageCloudManager:
             f"Deleting old versions: will delete {versions_to_delete} and leave {versions_to_keep}"
         )
         for version_obj in versions[0:versions_to_delete]:
-            print(f"\tDeleting: {version_obj.version_str} - {version_obj.destroy_url}")
+            print(f"\tDeleting: {version_obj.version_str}")
             if dry_run:
                 continue
             try:
@@ -223,6 +232,8 @@ class PackageCloudManager:
                     callback=None,
                 )
             except Exception as e:
-                logger.error(f"{e}")
+                logger.error(
+                    f"Error deleting {version_obj.name} {version_obj.version_str}': {e}"
+                )
 
         print(f"Kept versions: {versions[versions_to_delete:]}")

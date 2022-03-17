@@ -3,6 +3,7 @@ import logging
 
 import click
 import click_logging
+from packaging import version
 
 from .classes import PackageCloudManager, PackageCloudRepoConfiguration
 
@@ -45,6 +46,13 @@ logging.getLogger("urllib3").setLevel(logging.INFO)
     is_flag=True,
     help="Perform a dry-run without destroying or modifying any package.",
 )
+@click.option(
+    "-a",
+    "--additional-repo",
+    multiple=True,
+    help="Specify an aditional repository to look for packages.",
+    default=[],
+)
 def main(
     repo,
     user,
@@ -57,6 +65,7 @@ def main(
     versions_to_keep,
     verbosity,
     dry_run,
+    additional_repo,
 ):
     """
     REPO: Name of the PackageCloud repository. Can be passed through environment variable 'PC_REPO'
@@ -73,15 +82,14 @@ def main(
 
     logging.debug(f"Checking '{user}/{repo}' for distro '{distro}/{distro_version}'")
 
-    manager = PackageCloudManager(
-        PackageCloudRepoConfiguration(
-            api_token=api_token,
-            repository=repo,
-            user=user,
-            distribution=distro,
-            distribution_version=distro_version,
-        )
+    config = PackageCloudRepoConfiguration(
+        api_token=api_token,
+        repository=repo,
+        user=user,
+        distribution=distro,
+        distribution_version=distro_version,
     )
+    manager = PackageCloudManager(config)
 
     packages = []
     if package_name:
@@ -97,7 +105,35 @@ def main(
         print(
             f"Package: {package.name} ({package.versions_count} versions), latest: {versions[-1].version_str}"
         )
-        print(f"Versions: {versions}")
+        print(f"Versions ({repo}): {versions}")
+
+        try:
+            for other_repo in additional_repo:
+                manager.config.repository = other_repo
+                package_in_other_repo = manager.get_package(package.name)
+                if package_in_other_repo:
+                    other_versions = manager.package_versions(
+                        package=package_in_other_repo
+                    )
+                    other_versions.sort()
+                    print(f"Versions ({other_repo}): {other_versions}")
+
+                    if version.parse(other_versions[-1].version_str) < version.parse(
+                        versions[-1].version_str
+                    ):
+                        print(
+                            f"\nPackage '{package.name}' can be promoted from '{repo}' ({versions[-1].version_str}) "
+                            f"to '{other_repo}' ({other_versions[-1].version_str})')"
+                        )
+                else:
+                    print(
+                        f"\nPackage '{package.name}' can be promoted from '{repo}' ({versions[-1].version_str}) "
+                        f"to '{other_repo}' (Package doesn't exist in {other_repo})"
+                    )
+        except Exception as e:
+            logger.error(f"{e}")
+        finally:
+            manager.config.repository = repo
 
         if cleanup:
             try:
@@ -105,7 +141,7 @@ def main(
                     versions=versions, keep=versions_to_keep, dry_run=dry_run
                 )
             except Exception as e:
-                logger.error(f"{e}")
+                logger.error(f"Cleanup error: {e}")
 
         print()
 
