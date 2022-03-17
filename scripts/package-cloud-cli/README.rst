@@ -136,7 +136,7 @@ The :code:`--versions-to-keep` flag overrides this default value.
 
 .. code-block:: bash
 
-  $ package-cloud --all-packages --cleanup
+  $ package-cloud --all-packages --cleanup --versions-to-keep 2
 
   Package: usb-eth-gadget (2 versions), latest: 1.1.4-3
   Versions: [1.1.4-2, 1.1.4-3]
@@ -155,5 +155,9 @@ The :code:`--versions-to-keep` flag overrides this default value.
 
   Package: wifi-ap-sta (6 versions), latest: 0.7.3-1
   Versions: [0.5.0-1, 0.5.0-2, 0.6.0-1, 0.7.1-1, 0.7.2-1, 0.7.3-1]
-  Deleting old versions: will delete 0 and leave 6
-  Kept versions: [0.5.0-1, 0.5.0-2, 0.6.0-1, 0.7.1-1, 0.7.2-1, 0.7.3-1]
+  Deleting old versions: will delete 4 and leave 2
+     Deleting: 0.5.0-1
+     Deleting: 0.5.0-2
+     Deleting: 0.6.0-1
+     Deleting: 0.7.1-1
+  Kept versions: [0.7.2-1, 0.7.3-1]
