@@ -48,6 +48,8 @@ Usage
                                     Verbosity level.
     --dry-run                       Perform a dry-run without destroying or
                                     modifying any package.
+    -a, --additional-repo TEXT      Specify an aditional repository to look for
+                                    packages.
     --help                          Show this message and exit.
 
 
@@ -161,3 +163,28 @@ The :code:`--versions-to-keep` flag overrides this default value.
      Deleting: 0.6.0-1
      Deleting: 0.7.1-1
   Kept versions: [0.7.2-1, 0.7.3-1]
+
+- Include other repositories and check for promotions
+
+Using the :code:`--additional-repo` flag you can include more repositories in the query. This flag will also let you know if it's
+possible to promote the specified package from the repository set as positional argument (or via the environment variable :code:`PC_REPO`) to
+the additional repository specfied with :code:`--additional-repo`.
+
+.. code-block:: bash
+
+  $ PC_REPO=pi-top-os-unstable package-cloud --package-name pi-topd --additional-repo pi-top-os
+  Package: pi-topd (1 versions), latest: 5.3.1-2
+  Versions (pi-top-os-unstable): [5.3.1-2]
+  Versions (pi-top-os): [5.1.0-2, 5.1.0-3, 5.1.0-4, 5.1.0-5, 5.2.0-1, 5.2.1-1, 5.3.1-1]
+
+  Package 'pi-topd' can be promoted from 'pi-top-os-unstable' (5.3.1-2) to 'pi-top-os' (Latest version is '5.3.1-1')"
+
+
+.. code-block:: bash
+
+  $ PC_REPO=pi-top-os-unstable package-cloud --package-name web-renderer --additional-repo pi-top-os
+
+  Package: web-renderer (1 versions), latest: 0.5-1
+  Versions (pi-top-os-unstable): [0.5-1]
+
+  Package 'web-renderer' can be promoted from 'pi-top-os-unstable' (0.5-1) to 'pi-top-os' (Package doesn't exist in pi-top-os)

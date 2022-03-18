@@ -94,7 +94,10 @@ def main(
     packages = []
     if package_name:
         package = manager.get_package(package_name)
-        packages.append(package)
+        if package:
+            packages.append(package)
+        else:
+            print(f"Package '{package_name}' not found in '{repo}'.")
     elif all_packages:
         packages = manager.list_packages()
 
@@ -123,7 +126,7 @@ def main(
                     ):
                         print(
                             f"\nPackage '{package.name}' can be promoted from '{repo}' ({versions[-1].version_str}) "
-                            f"to '{other_repo}' ({other_versions[-1].version_str})')"
+                            f"to '{other_repo}' (Latest version is '{other_versions[-1].version_str})')"
                         )
                 else:
                     print(
