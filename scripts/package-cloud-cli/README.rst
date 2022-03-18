@@ -20,9 +20,7 @@ Usage
 
 .. code-block::
 
-  $ package-cloud --help
-
-  Usage: package-cloud [OPTIONS] REPO USER DISTRO DISTRO_VERSION API_TOKEN
+  $ package-cloud [OPTIONS] REPO USER DISTRO DISTRO_VERSION API_TOKEN
 
     REPO: Name of the PackageCloud repository. Can be passed through environment
     variable 'PC_REPO'
@@ -41,9 +39,8 @@ Usage
   Options:
     --all-packages                  Queries all packages in the repository.
     --package-name TEXT             Specify a particular package to target.
-    --cleanup
-    --versions-to-keep INTEGER      Maximum number of versions of a package to
-                                    keep in the repository. Defaults to 10.
+    --cleanup-and-keep INTEGER      Remove old versions of a package and keep
+                                    the specified number of versions.
     -v, --verbosity [DEBUG|INFO|WARNING|ERROR|CRITICAL]
                                     Verbosity level.
     --dry-run                       Perform a dry-run without destroying or
@@ -118,12 +115,11 @@ Instead of providing the repository information explicitly, these values can be 
 
 - Cleanup old versions of one package
 
-The :code:`--cleanup` flag tells the CLI to cleanup old versions of a package. By default, it will keep at least 10 versions of a package in the repository.
-The :code:`--versions-to-keep` flag overrides this default value.
+The :code:`--cleanup-and-keep` option tells the CLI to cleanup old versions of a package, leaving at least the specified number of versions of the package in the repository.
 
 .. code-block:: bash
 
-  $ package-cloud --package-name pi-topd  --cleanup --versions-to-keep 2
+  $ package-cloud --package-name pi-topd  --cleanup-and-keep 2
   Package: pi-topd (7 versions), latest: 5.3.1-1
   Versions: [5.1.0-2, 5.1.0-3, 5.1.0-4, 5.1.0-5, 5.2.0-1, 5.2.1-1, 5.3.1-1]
   Deleting old versions: will delete 5 and leave 2
@@ -138,7 +134,7 @@ The :code:`--versions-to-keep` flag overrides this default value.
 
 .. code-block:: bash
 
-  $ package-cloud --all-packages --cleanup --versions-to-keep 2
+  $ package-cloud --all-packages --cleanup-and-keep 2
 
   Package: usb-eth-gadget (2 versions), latest: 1.1.4-3
   Versions: [1.1.4-2, 1.1.4-3]

@@ -25,12 +25,10 @@ logging.getLogger("urllib3").setLevel(logging.INFO)
 @click.option(
     "--package-name", type=str, help="Specify a particular package to target."
 )
-@click.option("--cleanup", is_flag=True)
 @click.option(
-    "--versions-to-keep",
+    "--cleanup-and-keep",
     type=int,
-    default=10,
-    help="Maximum number of versions of a package to keep in the repository. Defaults to 10.",
+    help="Remove old versions of a package and keep the specified number of versions.",
 )
 @click.option(
     "-v",
@@ -61,8 +59,7 @@ def main(
     api_token,
     all_packages,
     package_name,
-    cleanup,
-    versions_to_keep,
+    cleanup_and_keep,
     verbosity,
     dry_run,
     additional_repo,
@@ -138,10 +135,10 @@ def main(
         finally:
             manager.config.repository = repo
 
-        if cleanup:
+        if cleanup_and_keep:
             try:
                 manager.delete_old_versions(
-                    versions=versions, keep=versions_to_keep, dry_run=dry_run
+                    versions=versions, keep=cleanup_and_keep, dry_run=dry_run
                 )
             except Exception as e:
                 logger.error(f"Cleanup error: {e}")
