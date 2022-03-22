@@ -11,9 +11,12 @@ Install locally running pip in the :code:`package-cloud-cli` folder:
 .. code-block::
 
   $ cd pi-topOS-Software/scripts/package-cloud-cli
-  $ sudo -H pip3 install .
+  $ pip3 install .
 
 This will install the :code:`package_cloud_cli` python package and the :code:`package-cloud` CLI tool into your machine.
+
+Remember to update your :code:`PATH` environment variable to include the folder where pip installs packages if you don't run :code:`pip install` with :code:`sudo`.
+For example, in a machine running a Debian based OS you need to run :code:`export PATH="${PATH}:/home/${USER}/.local/bin"`.
 
 Usage
 -----
