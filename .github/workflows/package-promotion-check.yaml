@@ -37,7 +37,7 @@ jobs:
           PC_DISTRO_VERSION=bullseye \
           PC_USER=pi-top \
           PC_REPO=${{ matrix.base_repo }} \
-            package-cloud --all-packages --additional-repo ${{ matrix.dest_repo }} >> ${{ matrix.base_repo }}-to-${{ matrix.dest_repo }}.txt
+            package-cloud --all-packages --promote-check --additional-repo ${{ matrix.dest_repo }} >> ${{ matrix.base_repo }}-to-${{ matrix.dest_repo }}.txt
 
           COMMAND_OUTPUT=$(cat ${{ matrix.base_repo }}-to-${{ matrix.dest_repo }}.txt)
           COMMAND_OUTPUT="${COMMAND_OUTPUT//'%'/'%25'}"
