@@ -1,0 +1,41 @@
+name: APT Package Promotion Checks 
+
+on:
+  push:
+  schedule:
+    # Run daily at midnight
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    branches:
+      - master
+
+
+jobs:
+  package-promotion-check:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        base_repo: [pi-top-os-unstable, pi-top-os-testing]
+        dest_repo: [pi-top-os-testing, pi-top-os]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Install package-cloud-cli
+        run: |
+          cd scripts/package-cloud-cli
+          pip3 install .
+
+      - name: Check for available promotions
+        if: ${{ matrix.base_repo }} != ${{ matrix.dest_repo }}
+        run: |
+          PC_API_TOKEN=${{ secrets.PACKAGECLOUD_TOKEN }} \
+          PC_DISTRO=debian \
+          PC_DISTRO_VERSION=bullseye \
+          PC_USER=pi-top \
+          PC_REPO=${{ matrix.base_repo }} \
+           package-cloud --all-packages --additional-repo ${{ matrix.dest_repo }}
