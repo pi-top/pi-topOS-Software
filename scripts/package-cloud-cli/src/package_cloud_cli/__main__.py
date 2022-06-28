@@ -116,13 +116,13 @@ def main(
                         package=package_in_other_repo
                     )
                     other_versions.sort()
-                    print(f"Versions ({other_repo}): {other_versions}")
+                    print(f"Versions ('{other_repo}'): '{other_versions}'")
 
                     if version.parse(other_versions[-1].version_str) < version.parse(
                         versions[-1].version_str
                     ):
                         print(
-                            f"\nPackage '{package.name}' can be promoted from '{repo}' ({versions[-1].version_str}) "
+                            f"\nPackage '{package.name}' can be promoted from '{repo}' ('{versions[-1].version_str}') "
                             f"to '{other_repo}' (Latest version is '{other_versions[-1].version_str})')"
                         )
                 else:
