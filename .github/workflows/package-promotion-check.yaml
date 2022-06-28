@@ -17,7 +17,6 @@ jobs:
       matrix:
         base_repo: [pi-top-os-unstable, pi-top-os-testing]
         dest_repo: [pi-top-os-testing, pi-top-os]
-    if: ${{ matrix.base_repo }} != ${{ matrix.dest_repo }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -31,6 +30,7 @@ jobs:
           pip3 install .
 
       - name: Check for available promotions
+        if: ${{ matrix.base_repo }} != ${{ matrix.dest_repo }}
         id: promotions
         run: |
           PC_API_TOKEN=${{ secrets.PACKAGECLOUD_TOKEN }} \
@@ -48,6 +48,7 @@ jobs:
           echo "::set-output name=COMMAND_OUTPUT::$COMMAND_OUTPUT"
 
       - name: Send message to Slack API
+        if: ${{ matrix.base_repo }} != ${{ matrix.dest_repo }}
         uses: archive/github-actions-slack@v2.0.0
         with:
           slack-bot-user-oauth-access-token: ${{ secrets.SLACK_PACKAGE_PROMOTER_TOKEN }}
