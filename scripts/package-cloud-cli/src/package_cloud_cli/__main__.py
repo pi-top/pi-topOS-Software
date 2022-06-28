@@ -103,9 +103,9 @@ def main(
         versions.sort()
 
         print(
-            f"Package: {package.name} ({package.versions_count} versions), latest: {versions[-1].version_str}"
+            f"Package: '{package.name}' ({package.versions_count} versions), latest: '{versions[-1].version_str}'"
         )
-        print(f"Versions ({repo}): {versions}")
+        print(f"Versions ('{repo}'): '{versions}'")
 
         try:
             for other_repo in additional_repo:
