@@ -1,7 +1,6 @@
 name: APT Package Promotion Checks 
 
 on:
-  push:
   schedule:
     # Run daily at midnight
     - cron: "0 0 * * *"
