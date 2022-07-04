@@ -8,17 +8,17 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository submodules
-        uses: actions/checkout@v2.3.4
-
-      - name: Install meta
-        run: |
-          sudo npm i -g meta
+        uses: actions/checkout@v3
 
       - name: Install SSH key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.GH_SERVICE_ACCT_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+
+      - name: Install meta
+        run: |
+          npm i --location=global meta
 
       - name: Clone repositories using meta
         run: |

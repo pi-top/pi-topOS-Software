@@ -51,6 +51,11 @@ logging.getLogger("urllib3").setLevel(logging.INFO)
     help="Specify an aditional repository to look for packages.",
     default=[],
 )
+@click.option(
+    "--promote-check",
+    help="",
+    is_flag=True,
+)
 def main(
     repo,
     user,
@@ -63,6 +68,7 @@ def main(
     verbosity,
     dry_run,
     additional_repo,
+    promote_check,
 ):
     """
     REPO: Name of the PackageCloud repository. Can be passed through environment variable 'PC_REPO'
@@ -102,10 +108,11 @@ def main(
         versions = manager.package_versions(package)
         versions.sort()
 
-        print(
-            f"Package: {package.name} ({package.versions_count} versions), latest: {versions[-1].version_str}"
-        )
-        print(f"Versions ({repo}): {versions}")
+        if not promote_check:
+            print(
+                f"Package: '{package.name}' ({package.versions_count} versions), latest: '{versions[-1].version_str}'"
+            )
+            print(f"Versions ('{repo}'): '{versions}'")
 
         try:
             for other_repo in additional_repo:
@@ -116,16 +123,18 @@ def main(
                         package=package_in_other_repo
                     )
                     other_versions.sort()
-                    print(f"Versions ({other_repo}): {other_versions}")
+                    
+                    if not promote_check:
+                        print(f"Versions ('{other_repo}'): '{other_versions}'")
 
-                    if version.parse(other_versions[-1].version_str) < version.parse(
+                    if promote_check and version.parse(other_versions[-1].version_str) < version.parse(
                         versions[-1].version_str
                     ):
                         print(
-                            f"\nPackage '{package.name}' can be promoted from '{repo}' ({versions[-1].version_str}) "
+                            f"\nPackage '{package.name}' can be promoted from '{repo}' ('{versions[-1].version_str}') "
                             f"to '{other_repo}' (Latest version is '{other_versions[-1].version_str})')"
                         )
-                else:
+                elif promote_check:
                     print(
                         f"\nPackage '{package.name}' can be promoted from '{repo}' ({versions[-1].version_str}) "
                         f"to '{other_repo}' (Package doesn't exist in {other_repo})"
