@@ -53,7 +53,7 @@ class InteractivePrompt(Cmd):
         commands.append(f"cp {workflowDir}/* .github/workflows/")
 
         # Commit
-        commands.append("git add --all")
+        commands.append("git add .github/workflows/deb*.yml")
         commands.append(f"git commit -m 'Updated {branch} workflow files'")
         commands.append("git push")
 
