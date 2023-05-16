@@ -54,7 +54,7 @@ jobs:
           # Optional, repo-specific build environment variables
           additional_env: |
             DATA="${{ secrets.DATA }}"
-            TLS_KEY="${{ secrets.TLS_KEY }}"
+            TLS_KEY="${{ secrets.CERT_PRIVATE_KEY }}"
 
       - name: Generate artifact name
         run: |
