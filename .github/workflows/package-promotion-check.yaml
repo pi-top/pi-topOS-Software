@@ -2,8 +2,8 @@ name: APT Package Promotion Checks
 
 on:
   schedule:
-    # Run daily at midnight
-    - cron: "0 0 * * *"
+    # Run on weekdays at midnight
+    - cron: "0 0 * * 1-5"
   workflow_dispatch:
     branches:
       - master
