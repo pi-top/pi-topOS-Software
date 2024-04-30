@@ -16,6 +16,7 @@ jobs:
       matrix:
         base_repo: [pi-top-os-unstable, pi-top-os-testing]
         dest_repo: [pi-top-os]
+        distro: [bullseye, bookworm]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -28,12 +29,12 @@ jobs:
           cd scripts/package-cloud-cli
           pip3 install .
 
-      - name: Check for available promotions
+      - name: Check for possible promotions
         id: promotions
         run: |
           PC_API_TOKEN=${{ secrets.PACKAGECLOUD_TOKEN }} \
           PC_DISTRO=debian \
-          PC_DISTRO_VERSION=bullseye \
+          PC_DISTRO_VERSION=${{ matrix.distro }} \
           PC_USER=pi-top \
           PC_REPO=${{ matrix.base_repo }} \
             package-cloud --all-packages --promote-check --additional-repo ${{ matrix.dest_repo }} >> ${{ matrix.base_repo }}-to-${{ matrix.dest_repo }}.txt
@@ -53,4 +54,4 @@ jobs:
         with:
           slack-bot-user-oauth-access-token: ${{ secrets.SLACK_PACKAGE_PROMOTER_TOKEN }}
           slack-channel: C02UEAAHK3R
-          slack-text: "${{ steps.promotions.outputs.COMMAND_OUTPUT }}"
+          slack-text: "For ${{ matrix.distro }}:\n\r${{ steps.promotions.outputs.COMMAND_OUTPUT }}"
