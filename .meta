@@ -24,6 +24,8 @@
     "packages/pi-top/Wi-Fi-Access-Point-and-Station-Mode": "git@github.com:pi-top/Wi-Fi-Access-Point-and-Station-Mode.git",
     "packages/pi-top/pi-top-Offline-Updates": "git@github.com:pi-top/pi-top-Offline-Updates.git",
     "packages/upstream": "git@github.com:pi-top/pi-topOS-Upstream-Package-Build.git",
+    "packages/external/noVNC": "git@github.com:pi-top/noVNC.git",
+    "packages/external/grove.py": "git@github.com:pi-top/grove.py.git",
     "recovery": "git@github.com:pi-top/pi-topOS-Recovery.git"
   }
 }
