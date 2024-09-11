@@ -70,11 +70,23 @@ jobs:
 
       - name: Update pi-topOS container and download packages
         run: |
-          sudo systemd-nspawn --pipe --bind "$PWD":/packages  -D "${{ env.MOUNT_POINT }}" /bin/bash << EOF
+          tmp_folder=$(mktemp -d)
+          sudo systemd-nspawn --pipe --bind "$tmp_folder":/apt_cache  -D "${{ env.MOUNT_POINT }}" /bin/bash << EOF
+            export DEBIAN_FRONTEND=noninteractive
+
+            # Use /apt_cache as a temporary directory to store the apt cache
+            mv -i /var/cache/apt /apt_cache
+            ln -s /apt_cache /var/cache/apt
+
+            # Update system and download packages
             apt update
-            DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y
-            DEBIAN_FRONTEND=noninteractive apt autoremove -y
-            DEBIAN_FRONTEND=noninteractive apt clean
+            apt dist-upgrade -y
+            apt autoremove -y
+
+            # Cleanup
+            apt clean
+            unlink /var/cache/apt
+            mv /apt_cache/apt /var/cache
           EOF
 
       - name: Umount
