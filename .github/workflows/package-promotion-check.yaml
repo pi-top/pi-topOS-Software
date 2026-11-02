@@ -11,18 +11,23 @@ on:
 
 jobs:
   package-promotion-check:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         base_repo: [pi-top-os-unstable, pi-top-os-testing]
         dest_repo: [pi-top-os]
-        distro: [bullseye, bookworm]
+        distro: [bookworm]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
       - name: Install package-cloud-cli
         run: |
@@ -40,17 +45,17 @@ jobs:
             package-cloud --all-packages --promote-check --additional-repo ${{ matrix.dest_repo }} >> ${{ matrix.base_repo }}-to-${{ matrix.dest_repo }}.txt
 
           COMMAND_OUTPUT=$(cat ${{ matrix.base_repo }}-to-${{ matrix.dest_repo }}.txt)
-          COMMAND_OUTPUT="${COMMAND_OUTPUT//'%'/'%25'}"
-          COMMAND_OUTPUT="${COMMAND_OUTPUT//$'\n'/'%0A'}"
-          COMMAND_OUTPUT="${COMMAND_OUTPUT//$'\r'/'%0D'}"
           COMMAND_OUTPUT="${COMMAND_OUTPUT//$'\''/\`}"
-          
 
-          echo "::set-output name=COMMAND_OUTPUT::$COMMAND_OUTPUT"
+          {
+            echo "COMMAND_OUTPUT<<EOF"
+            echo "$COMMAND_OUTPUT"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Send message to Slack API
         if: steps.promotions.outputs.COMMAND_OUTPUT
-        uses: archive/github-actions-slack@v2.0.0
+        uses: archive/github-actions-slack@v3.1.0
         with:
           slack-bot-user-oauth-access-token: ${{ secrets.SLACK_PACKAGE_PROMOTER_TOKEN }}
           slack-channel: C02UEAAHK3R
