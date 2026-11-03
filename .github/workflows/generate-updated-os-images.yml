@@ -1,0 +1,114 @@
+name: Create updated pi-topOS images
+
+on:
+  schedule:
+    # Run on weekdays at midnight
+    - cron: "0 0 * * 1-5"
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - master
+
+env:
+  MOUNT_POINT: "/tmp/pi-top-os"
+
+jobs:
+  download-packages:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - DISTRO: "bullseye"
+            PI_TOP_OS_URL: "https://storage.googleapis.com/pt-os-release/pi-topOS-bullseye/pi-topOS_bullseye_release_armhf_2023-05-23_B25.zip"
+          - DISTRO: "bookworm"
+            PI_TOP_OS_URL: "https://storage.googleapis.com/pt-os-release/pi-topOS-bookworm/pi-topOS_bookworm_release_armhf_2024-08-06_B62.zip"
+
+    permissions:
+      contents: "read"
+      id-token: "write"
+
+    steps:
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@v1.3.1
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: false
+          swap-storage: false
+
+      - name: GitHub Environment Variables Action
+        uses: FranzDiebold/github-env-vars-action@v2.7.0
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y \
+            systemd-container \
+            qemu-user-static
+
+      - name: Get pi-topOS image filename
+        run: |
+          echo "IMAGE_FILE=$(basename ${{ matrix.PI_TOP_OS_URL }} | cut -d'.' -f1).img" >> $GITHUB_ENV
+          echo "UPDATED_IMAGE_FILE_NAME=$(basename ${{ matrix.PI_TOP_OS_URL }} | cut -d'.' -f1)_updated.zip" >> $GITHUB_ENV
+
+      - name: Download pi-topOS image
+        run: |
+          wget "${{ matrix.PI_TOP_OS_URL }}" -O pi-topOS.zip
+          unzip pi-topOS.zip
+          ls -lh
+
+      - name: Mount OS Image root partition
+        uses: jcapona/mount-image-partition-action@v0.3
+        with:
+          imagePath: ${{ env.IMAGE_FILE }}
+          mountPoint: ${{ env.MOUNT_POINT }}
+          partitionIndex: 3
+          filesystem: ext4
+
+      - name: Update pi-topOS container and download packages
+        run: |
+          tmp_folder=$(mktemp -d)
+          sudo systemd-nspawn --pipe --bind "$tmp_folder":/apt_cache  -D "${{ env.MOUNT_POINT }}" /bin/bash << EOF
+            export DEBIAN_FRONTEND=noninteractive
+
+            # Use /apt_cache as a temporary directory to store the apt cache
+            mv -i /var/cache/apt /apt_cache
+            ln -s /apt_cache /var/cache/apt
+
+            # Update system and download packages
+            apt update
+            apt dist-upgrade -y
+            apt autoremove -y
+
+            # Cleanup
+            apt clean
+            unlink /var/cache/apt
+            mv /apt_cache/apt /var/cache
+          EOF
+
+      - name: Umount
+        run: |
+          sudo umount "${{ env.MOUNT_POINT }}" || true
+
+      - name: Display image file size
+        run: |
+          ls -lhR
+
+      - name: Upload as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: OS-${{ matrix.DISTRO }}
+          path: "${{ env.IMAGE_FILE }}"
+
+      # - name: Report to slack
+      #   if: github.ref == 'refs/heads/master' && always()
+      #   uses: slackapi/slack-github-action@v1.25.0
+      #   with:
+      #     channel-id: 'C02UEAAHK3R'
+      #     slack-message: "pi-top-Offline-Updates: create-usb-setup-file workflow run for ${{ matrix.DISTRO }}.\nStatus: ${{ job.status }}\nUrl: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      #   env:
+      #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_PACKAGE_PROMOTER_TOKEN }}
+
