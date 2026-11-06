@@ -60,7 +60,7 @@ Example
 
 .. code-block:: bash
 
-  $ package-cloud pi-top-os pi-top debian bullseye <PACKAGE_CLOUD_API_TOKEN> --package-name pi-topd
+  $ package-cloud pi-top-os pi-top debian bookworm <PACKAGE_CLOUD_API_TOKEN> --package-name pi-topd
 
   Package: pi-topd (7 versions), latest: 5.3.1-1
   Versions: [5.1.0-2, 5.1.0-3, 5.1.0-4, 5.1.0-5, 5.2.0-1, 5.2.1-1, 5.3.1-1]
@@ -74,7 +74,7 @@ Instead of providing the repository information explicitly, these values can be 
 
   $ PC_USER=pi-top \
     PC_DISTRO=debian \
-    PC_DISTRO_VERSION=bullseye \
+    PC_DISTRO_VERSION=bookworm \
     PC_API_TOKEN=<PACKAGE_CLOUD_API_TOKEN> \
     package-cloud --package-name pi-topd
 
