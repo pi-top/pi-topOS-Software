@@ -1,6 +1,6 @@
 """Command-line interface for working with Package Cloud repositories."""
 import logging
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields
 from enum import Enum, auto
 from typing import Callable, List, Optional
 
@@ -9,6 +9,12 @@ from linkheader_parser import parse
 from packaging import version
 
 logger = logging.getLogger(__name__)
+
+
+def from_response(cls, response: dict):
+    # PackageCloud adds fields over time; ignore any we don't model
+    names = {f.name for f in fields(cls) if f.init}
+    return cls(**{k: v for k, v in response.items() if k in names})
 
 
 @dataclass
@@ -154,7 +160,7 @@ class PackageCloudManager:
 
         def parse_packages_response(response):
             for package in response:
-                packages.append(PackageVersion(**package))
+                packages.append(from_response(PackageVersion, package))
 
         self._send_request(
             self.config.packages_url,
@@ -174,7 +180,7 @@ class PackageCloudManager:
 
         def parse_versions(response):
             for version_response in response:
-                versions.append(PackageFragment(**version_response))
+                versions.append(from_response(PackageFragment, version_response))
 
         self._send_request(
             package.versions_url, request_type=RequestType.GET, callback=parse_versions
