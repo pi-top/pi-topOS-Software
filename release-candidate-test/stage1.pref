@@ -1,0 +1,13 @@
+# Stage 1: only Update-Monitor is promoted
+Package: pt-os-update-monitor
+Pin: version 0.2.1-1
+Pin-Priority: 500
+
+# Nothing else from unstable or experimental
+Package: *
+Pin: release l=pi-top-os-unstable
+Pin-Priority: -1
+
+Package: *
+Pin: release l=experimental
+Pin-Priority: -1
