@@ -1,0 +1,38 @@
+# Stage 2: everything in unstable is promoted
+Package: *
+Pin: release l=pi-top-os-unstable
+Pin-Priority: 500
+
+# Third-party rebuilds that ship with this release, by exact version
+Package: python3-dlib
+Pin: version 19.24.2+ptos3-245
+Pin-Priority: 500
+
+Package: python3-sonic
+Pin: version 0.4.3+ptos3-245
+Pin-Priority: 500
+
+Package: python3-nmcli
+Pin: version 1.3.0+ptos3-245
+Pin-Priority: 500
+
+Package: python3-click-logging
+Pin: version 1.0.1+ptos3-245
+Pin-Priority: 500
+
+Package: python3-dbus-fast
+Pin: version 0:2.44.3-2~w2d0
+Pin-Priority: 500
+
+Package: python3-bluez-peripheral
+Pin: version 0:0.2.0~a4-2~w2d0
+Pin-Priority: 500
+
+Package: python3-onnxruntime
+Pin: version 0:1.18.0-2~w2d0
+Pin-Priority: 500
+
+# Nothing else from experimental
+Package: *
+Pin: release l=experimental
+Pin-Priority: -1
