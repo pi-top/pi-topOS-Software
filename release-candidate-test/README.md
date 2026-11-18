@@ -10,7 +10,7 @@ This release goes out in two promotions, so the test has two stages on the same 
 
 | Stage | Promoted | Why |
 |---|---|---|
-| `stage1` | Update-Monitor 0.2.1-1 only | The factory monitor (0.1.0-1) stops part-way when pi-topd restarts. Field devices get the fixed monitor first. |
+| `stage1` | Update-Monitor 0.3.1-1, with `pt-os-kernel-pin` (which it depends on) and the approved kernel | The factory monitor (0.1.0-1) stops part-way when pi-topd restarts. Field devices get the fixed monitor first. |
 | `stage2` | Everything else in unstable, plus the third-party rebuilds | Installed by the fixed monitor, in one go |
 | `stage2-only` (optional) | Same as stage 2, on a fresh card | A device that was off during stage 1. The update may stop part-way once, then must finish on a retry. |
 
@@ -55,7 +55,7 @@ After the update:
 - dpkg and apt are consistent, and nothing is left to upgrade. If apt is still busy with the monitor's follow-up pass, this is a warning: run the check again.
 - No pi-top package was removed.
 - Every exact-version pin in the stage's `.pref` is installed at that version.
-- From stage 2: `pt-os-kernel-pin` is installed, the kernel is the version in pi-top's repositories, and unattended-upgrades has no blacklist.
+- Every stage: `pt-os-kernel-pin` is installed, the kernel is the version in pi-top's repositories, and unattended-upgrades has no blacklist.
 
 After the reboot:
 
