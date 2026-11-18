@@ -103,10 +103,8 @@ if [ "$(dpkg-query -W -f='${db:Status-Status}' pt-os-kernel-pin 2>/dev/null)" = 
   else
     r FAIL no-kernel-blacklist "$blacklist blacklist entries left"
   fi
-elif [ "$STAGE" != stage1 ]; then
-  r FAIL kernel-approved "pt-os-kernel-pin is not installed"
 else
-  r INFO kernel-approved "no kernel pin yet (it ships in stage 2)"
+  r FAIL kernel-approved "pt-os-kernel-pin is not installed"
 fi
 
 # --- After a reboot -----------------------------------------------------------

@@ -1,6 +1,14 @@
-# Stage 1: only Update-Monitor is promoted
+# Stage 1: Update-Monitor, with the kernel pin it depends on and the approved kernel
 Package: pt-os-update-monitor
-Pin: version 0.2.1-1
+Pin: version 0.3.1-1
+Pin-Priority: 500
+
+Package: pt-os-kernel-pin
+Pin: version 5.9.0-1
+Pin-Priority: 500
+
+Package: linux-image-rpi-* linux-headers-rpi-* linux-image-rpi-*:arm64 linux-headers-rpi-*:arm64
+Pin: version 1:6.12.115-1+rpt1
 Pin-Priority: 500
 
 # Nothing else from unstable or experimental
