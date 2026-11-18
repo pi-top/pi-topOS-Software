@@ -3,6 +3,11 @@
 set -euo pipefail
 : "${STAGE:?}" "${PREF:?}"
 
+# Debian's daily run only downloads, but holds the apt lock needed below
+if pgrep -af 'unattended-upgrade$|unattended-upgrade ' | grep -- '--download-only' >/dev/null; then
+  systemctl stop apt-daily.service
+fi
+
 if pgrep -f 'unattended-upgrade$|unattended-upgrade ' >/dev/null; then
   echo "An automatic update is already running; this card no longer starts from" >&2
   echo "the factory state. Restore the image again and set up straight after boot." >&2
