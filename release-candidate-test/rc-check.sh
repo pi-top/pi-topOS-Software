@@ -18,11 +18,14 @@ if [ -z "$results" ]; then
   exit 1
 fi
 
-# Further-Link, as Further's browser reaches it: <ip-with-dashes>.further-link.pi-top.com
+# Further-Link, as Further's browser reaches it: <ip-with-dashes>.further-link.pi-top.com.
+# Further creates that DNS name when it first connects, so go straight to the IP.
 if grep -q $'^PASS\trebooted' <<<"$results"; then
   ip=$HOST
   [[ $ip =~ ^[0-9]+(\.[0-9]+){3}$ ]] || ip=$(remote "hostname -I | cut -d' ' -f1")
-  url="https://${ip//./-}.further-link.pi-top.com:8028/status"
+  name="${ip//./-}.further-link.pi-top.com"
+  url="https://$name:8028/status"
+  curl() { command curl --resolve "$name:8028:$ip" "$@"; }
   code=$(curl -sS --max-time 15 -o /dev/null -w '%{http_code}' "$url" 2>/dev/null)
   verbose=$(curl -sS -v --max-time 15 -o /dev/null "$url" 2>&1)
   expiry=$(sed -n 's/^\*  *expire date: //p' <<<"$verbose")

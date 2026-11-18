@@ -52,7 +52,7 @@ Expect a SSH host key warning on the Mac during the test: updating replaces host
 After the update:
 
 - The update finished. In `stage2` it must finish in one run.
-- dpkg and apt are consistent, and nothing is left to upgrade.
+- dpkg and apt are consistent, and nothing is left to upgrade. If apt is still busy with the monitor's follow-up pass, this is a warning: run the check again.
 - No pi-top package was removed.
 - Every exact-version pin in the stage's `.pref` is installed at that version.
 - From stage 2: `pt-os-kernel-pin` is installed, the kernel is the version in pi-top's repositories, and unattended-upgrades has no blacklist.
@@ -66,8 +66,8 @@ After the reboot:
 - Errors logged by pi-top services are warnings.
 - How soon after boot the automatic update started.
 - The Wi-Fi watchdog timer is active.
-- The SSH host keys are not ones that shipped in an image.
-- From the Mac: Further-Link answers on `https://<ip-with-dashes>.further-link.pi-top.com:8028` with a trusted certificate, and when it expires.
+- The SSH host keys are not ones that shipped in an image (from pt-os-init 5.8.2, which brings the list of image keys; before that it only shows them).
+- From the Mac: Further-Link answers on `https://<ip-with-dashes>.further-link.pi-top.com:8028` with a trusted certificate, and when it expires. The check connects straight to the IP, because Further only creates that DNS name when it first connects.
 
 `FAIL` blocks the release. `WARN` needs a look and a note in the record. The exit code is 1 if anything failed.
 
