@@ -45,10 +45,13 @@ if [ -n "$first" ]; then
 fi
 
 audit=$(dpkg --audit 2>&1)
-if [ -z "$audit" ] && apt-get check -qq >/dev/null 2>&1; then
+check=$(apt-get check -qq 2>&1)
+if [ -z "$audit" ] && [ -z "$check" ]; then
   r PASS dpkg-state "dpkg --audit and apt-get check clean"
+elif grep -q 'Could not get lock' <<<"$check"; then
+  r WARN dpkg-state "apt is busy (the monitor runs another pass after an update); run again shortly"
 else
-  r FAIL dpkg-state "$(head -3 <<<"$audit" | tr '\n' '|')"
+  r FAIL dpkg-state "$(printf '%s\n%s\n' "$audit" "$check" | grep . | head -3 | tr '\n' '|')"
 fi
 
 upgradable=$(apt list --upgradable 2>/dev/null | grep upgradable | cut -d/ -f1)
@@ -185,7 +188,9 @@ fi
 baked=/usr/lib/pt-os-init/baked-ssh-host-keys
 for key in /etc/ssh/ssh_host_*_key.pub; do
   fp=$(ssh-keygen -lf "$key" | awk '{print $2}')
-  if [ -f "$baked" ] && grep -q -x -F "$fp" "$baked"; then
+  if [ ! -f "$baked" ]; then
+    r INFO "ssh-key:$(basename "$key")" "$fp (can't check: $baked comes with pt-os-init 5.8.2)"
+  elif grep -q -x -F "$fp" "$baked"; then
     r FAIL "ssh-key:$(basename "$key")" "$fp shipped inside a pi-topOS image"
   else
     r PASS "ssh-key:$(basename "$key")" "$fp"
