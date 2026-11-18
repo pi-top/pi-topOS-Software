@@ -3,7 +3,11 @@
 set -euo pipefail
 : "${STAGE:?}" "${PREF:?}"
 
-# Debian's daily run only downloads, but holds the apt lock needed below
+# The Update-Monitor runs apt-daily (download only), then the install. Stopped
+# first, it can't start the install during setup; rc-setup.sh's reboot restarts it.
+systemctl stop pt-unattended-upgrades.service
+
+# The download holds the apt lock needed below
 if pgrep -af 'unattended-upgrade$|unattended-upgrade ' | grep -- '--download-only' >/dev/null; then
   systemctl stop apt-daily.service
 fi
