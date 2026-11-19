@@ -73,18 +73,28 @@ else
 fi
 [ -n "$removed" ] && r INFO removed "$(grep -c . <<<"$removed") removed: $(head -10 <<<"$removed" | tr '\n' ' ')"
 
-# Each exact-version pin in this stage's preferences is installed at that version
-while read -r pkg version; do
-  now=$(dpkg-query -W -f='${Version}' "$pkg" 2>/dev/null)
+# Each exact-version pin in this stage's preferences is installed at that version.
+# A wildcard name checks every installed package it matches, and may match none.
+pins=$(awk -v RS= '/\nPin: version / && /Pin-Priority: [1-9]/ {
+  split($0, l, "\n"); p = ""; v = ""
+  for (i in l) { if (l[i] ~ /^Package: /) p = substr(l[i], 10); if (l[i] ~ /^Pin: version /) v = substr(l[i], 14) }
+  n = split(p, names, " "); for (j = 1; j <= n; j++) print names[j], v }' /etc/apt/preferences.d/zz-rc-test)
+while read -r name version; do
+  [ -n "$name" ] || continue
+  matches=$(dpkg-query -W -f='${db:Status-Status} ${Package}:${Architecture} ${Version}\n' "$name" 2>/dev/null |
+    awk -v v="$version" '$1 == "installed" {print $2, $3, v}')
+  if [ -n "$matches" ]; then
+    echo "$matches"
+  elif [[ $name != *'*'* ]]; then
+    echo "$name none $version"
+  fi
+done <<<"$pins" | sort -u | while read -r pkg now version; do
   if [ "${now#0:}" = "${version#0:}" ]; then
     r PASS "version:$pkg" "$now"
   else
-    r FAIL "version:$pkg" "installed '${now:-none}', expected $version"
+    r FAIL "version:$pkg" "installed $now, expected $version"
   fi
-done < <(awk -v RS= '/\nPin: version / && /Pin-Priority: [1-9]/ {
-  split($0, l, "\n"); p = ""; v = ""
-  for (i in l) { if (l[i] ~ /^Package: /) p = substr(l[i], 10); if (l[i] ~ /^Pin: version /) v = substr(l[i], 14) }
-  print p, v }' /etc/apt/preferences.d/zz-rc-test)
+done
 
 # --- Kernel -------------------------------------------------------------------
 running=$(uname -r)
